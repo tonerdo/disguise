@@ -1,0 +1,20 @@
+{
+  "name": "Disgui.se",
+  "version": "1.0.0",
+  "description": "A web app to create disposable emails to use on spammy websites, to protect privacy and for whistleblowing",
+  "main": "public/index.html",
+  "keywords": [
+    "disguise",
+    "emails",
+    "disposable",
+    "whistleblowing",
+    "security",
+    "privacy"
+  ],
+  "authors": [
+    "Toni Solarin-Sodara"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true
+}

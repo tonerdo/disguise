@@ -1,0 +1,29 @@
+{
+  "name": "Disgui.se",
+  "version": "1.0.0",
+  "description": "A web app to create disposable emails to use on spammy websites, to protect privacy and for whistleblowing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andela-tsolarin/disgui.se.git"
+  },
+  "keywords": [
+    "privacy",
+    "whistleblowing",
+    "disguise",
+    "disgui.se",
+    "email",
+    "security",
+    "leaks",
+    "wikileaks"
+  ],
+  "author": "Toni Solarin-Sodara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-tsolarin/disgui.se/issues"
+  },
+  "homepage": "https://github.com/andela-tsolarin/disgui.se"
+}
