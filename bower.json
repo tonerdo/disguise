@@ -16,5 +16,11 @@
   ],
   "license": "MIT",
   "homepage": "index.html",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-ui-router": "~0.2.15",
+    "angular-sanitize": "~1.4.0",
+    "bootstrap": "~3.3.4"
+  }
 }
