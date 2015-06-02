@@ -5,5 +5,6 @@ var mongoose = require('mongoose'),
 mongoose.connect(config.db.uri);
 
 var server = require('./config/express')();
+
 server.listen(config.server.port);
 exports = module.exports = server;
