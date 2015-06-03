@@ -1,10 +1,10 @@
 var mongoose = require('mongoose'),
     config = require('./config/config')();
 
-mongoose.connect(config.db.uri);
+var db = mongoose.connect(config.db.uri);
 
 var appServer = require('./config/express')();
-var smtpServer = require('./config/smtp')();
+var smtpServer = require('./config/smtp-server')();
 
 appServer.listen(config.server.port);
 smtpServer.listen(config.smtp.port);
