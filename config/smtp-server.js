@@ -25,7 +25,11 @@ module.exports = function() {
 
   });
 
-  // Handle errors
+  /**
+   * Handle SMTP server errors
+   * @param  {String}
+   * @return {SMTPServer}
+   */
   mail.on('error', function(err){
     console.log('Error: ' + err.message);
   });

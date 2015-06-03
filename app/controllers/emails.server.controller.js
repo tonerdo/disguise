@@ -4,7 +4,12 @@ var nodemailer = require('nodemailer'),
 
 module.exports = {
 
-  // Send email
+  /**
+   * Send an email
+   * @param  {[type]}
+   * @param  {[type]}
+   * @return {[type]}
+   */
   send: function(req, res) {
 
     // Initialize transport object and authenticate user
@@ -23,7 +28,9 @@ module.exports = {
       to: req.body.to,
       subject: req.body.subject,
       html: req.body.message
-    }, function(error, response){
+    }, 
+
+    function(error, response){
 
       if(error){
         console.log(error);

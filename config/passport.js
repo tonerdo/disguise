@@ -29,7 +29,8 @@ module.exports = function(passport) {
         return done(null, {
           "_id": user._id,
           "username": user.username,
-          "created": user.created
+          "created": user.created,
+          "access_token": user._token
         });
 
       });
