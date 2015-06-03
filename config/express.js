@@ -2,7 +2,6 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     passport = require('passport');
-    LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../app/models/user.server.model');
 

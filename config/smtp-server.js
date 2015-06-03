@@ -12,16 +12,12 @@ module.exports = function() {
     hideSTARTTLS: true,
     onAuth: function(auth, session, callback) {
 
-      console.log('Username: ' + auth.username);
-      console.log('Password: ' + auth.password);
-
       User.findOne({"username": auth.username, "password": auth.password}, function(err, user){
 
-        console.log(user);
         if (!user) {
           callback(new Error('Invalid username or password'));
         } else {
-          callback(null, user);
+          callback(null, { user: user });
         }
 
       });
