@@ -1,4 +1,3 @@
-var smtpConnection = require('smtp-connection');
 var nodemailer = require('nodemailer'),
     smtpTransport = require('nodemailer-smtp-transport');
 

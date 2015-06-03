@@ -4,12 +4,17 @@ module.exports = function() {
     "port": 8080
   };
 
+  var smtp = {
+    "port": 25
+  };
+
   var db = {
     "uri": "mongodb://localhost/disguise"
   };
 
   return {
     "server": server,
-    "db": db
+    "db": db,
+    "smtp": smtp
   };
 }
