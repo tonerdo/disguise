@@ -1,4 +1,4 @@
-require('../models/user.server.model.js');
+require('../models/user.server.model');
 var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
@@ -80,7 +80,7 @@ module.exports = {
         res.json(users);
       }
     });
-    
+
   }
 
 }

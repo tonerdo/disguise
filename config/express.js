@@ -1,5 +1,10 @@
 var express = require('express'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    passport = require('passport');
+    LocalStrategy = require('passport-local').Strategy;
+
+var User = require('../app/models/user.server.model');
 
 module.exports = function() {
 
@@ -9,9 +14,22 @@ module.exports = function() {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
+  app.use(session(
+    {
+      secret: 'IHopeNobodyCanGuessThisSecret',
+      saveUninitialized: false,
+      resave: false
+    }
+  ));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  // Include passport config
+  require('./passport')(passport);
+
   // Include all routes
-  require('../app/routes/users.server.routes.js')(app);
-  require('../app/routes/emails.server.routes.js')(app);
+  require('../app/routes/users.server.routes')(app, passport);
+  require('../app/routes/emails.server.routes')(app);
 
   return app;
 }

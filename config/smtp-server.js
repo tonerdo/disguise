@@ -1,5 +1,9 @@
 var smtp = require('smtp-server').SMTPServer;
 
+require('../app/models/user.server.model');
+var mongoose = require('mongoose'),
+    User = mongoose.model('User');
+
 module.exports = function() {
 
   var mail = new smtp({
@@ -7,9 +11,20 @@ module.exports = function() {
     disabledCommands: ['STARTTLS'],
     hideSTARTTLS: true,
     onAuth: function(auth, session, callback) {
+
       console.log('Username: ' + auth.username);
       console.log('Password: ' + auth.password);
-      callback(null, {user: 123});
+
+      User.findOne({"username": auth.username, "password": auth.password}, function(err, user){
+
+        console.log(user);
+        if (!user) {
+          callback(new Error('Invalid username or password'));
+        } else {
+          callback(null, user);
+        }
+
+      });
     }
 
   });
