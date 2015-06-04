@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 var db = mongoose.connect(config.db.uri);
 mongoose.connection.once('open', function(){
-  console.log("Connection successful");
+  console.log("Database Connection successful");
 });
 
 var appServer = require('./config/express')();

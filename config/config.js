@@ -5,7 +5,7 @@ module.exports = function() {
   };
 
   var smtp = {
-    "port": 250
+    "port": 1025
   };
 
   var db = {
