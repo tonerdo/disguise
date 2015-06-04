@@ -26,7 +26,7 @@ module.exports = {
 
     // Send the email
     transporter.sendMail({
-      from: req.body.username,
+      from: req.body.username + '@disgui.se',
       to: req.body.to,
       subject: req.body.subject,
       html: req.body.message
