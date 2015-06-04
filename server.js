@@ -10,7 +10,9 @@ mongoose.connection.once('open', function(){
 var appServer = require('./config/express')();
 var smtpServer = require('./config/smtp-server')();
 
-appServer.listen(config.server.port);
+appServer.listen(config.server.port, function(){
+  console.log("Server listening on port " + config.server.port);
+});
 smtpServer.listen(config.smtp.port);
 
 exports = module.exports = appServer;
