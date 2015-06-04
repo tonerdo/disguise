@@ -15,10 +15,11 @@ module.exports = {
 
     var user = new User(req.body);
     user._token = user.createToken(user.username);
+
     user.save(function(err){
 
       if (err) {
-        return res.status(500).send();
+        return res.status(500).send(err);
       } else {
         res.json(user);
       }
@@ -43,16 +44,16 @@ module.exports = {
     User.findOne({"_id": userId}, function(err, user){
 
       if (err) {
-        return res.status(500).send();
+        return res.status(500).send(err);
       } else {
 
         if(user._token !== accessToken) { return res.json({ "error": "Invalid access token" }); }
 
         user.username = req.body.username;
         user.save(function(err, affected){
-          console.log(affected);
+          
           if (err) {
-            return res.status(500).send();
+            return res.status(500).send(err);
           } else {
             res.json({
               "message": "Update successful"
@@ -81,14 +82,14 @@ module.exports = {
     User.findOne({"_id": userId}, function(err, user){
 
       if (err) {
-        return res.status(500).send();
+        return res.status(500).send(err);
       } else {
 
         if(user._token !== accessToken) { return res.json({ "error": "Invalid access token" }); }
 
         user.remove(function(err){
           if (err){
-            return res.status(500).send();
+            return res.status(500).send(err);
           } else {
             res.json({
               "message": "Delete successful"
@@ -113,7 +114,7 @@ module.exports = {
     User.findOne({"_id": userId}, function(err, user){
 
       if (err) {
-        return res.status(500).send();
+        return res.status(500).send(err);
       } else {
 
         res.json({
@@ -137,7 +138,7 @@ module.exports = {
     User.find(function(err, users){
 
       if (err) {
-        return res.status(500).send();
+        return res.status(500).send(err);
       } else {
         res.json(users);
       }

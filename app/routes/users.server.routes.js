@@ -6,7 +6,7 @@ module.exports = function(app, passport) {
         .get(users.list)
         .post(users.create);
 
-  app.post('/api/users/login', passport.authenticate('login-local', { session: false }), function(req, res){
+  app.post('/api/users/login', passport.authenticate('local', { session: false }), function(req, res){
     res.json(req.user);
   });
 

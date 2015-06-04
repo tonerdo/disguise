@@ -19,7 +19,7 @@ module.exports = function(passport) {
   });
 
   // Handle login
-  passport.use('login-local', new LocalStrategy(
+  passport.use('local', new LocalStrategy(
     function(username, password, done){
 
       User.findOne({"username": username, "password": password}, function(err, user){

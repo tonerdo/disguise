@@ -6,11 +6,13 @@ var UserSchema = new Schema({
 
   username: {
     type: String,
-    required: "Username must be specified"
+    required: "Username must be specified",
+    unique: true
   },
 
   password: {
-    type: String
+    type: String,
+    required: "Password must be specified"
   },
 
   created: {
