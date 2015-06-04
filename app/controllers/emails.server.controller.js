@@ -29,6 +29,7 @@ module.exports = {
       from: req.body.username + '@disgui.se',
       to: req.body.to,
       subject: req.body.subject,
+      text: req.body.message,
       html: req.body.message
     }, 
 
