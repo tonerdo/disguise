@@ -16,7 +16,7 @@ module.exports = {
     // Initialize transport object and authenticate user
     var transporter = nodemailer.createTransport(smtpTransport({
       host: os.hostname(),
-      port: 25,
+      port: 250,
       auth: {
         user: req.body.username,
         pass: req.body.password

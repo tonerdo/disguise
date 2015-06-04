@@ -1,3 +1,4 @@
+require('dotenv').load();
 module.exports = function() {
 
   var server = {
@@ -5,11 +6,11 @@ module.exports = function() {
   };
 
   var smtp = {
-    "port": 25
+    "port": 250
   };
 
   var db = {
-    "uri": "mongodb://localhost/disguise"
+    "uri": process.env.MONGODB_DEV || process.env.MONGODB_PROD
   };
 
   return {
