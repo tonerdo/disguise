@@ -1,5 +1,6 @@
 var nodemailer = require('nodemailer'),
-    smtpTransport = require('nodemailer-smtp-transport');
+    smtpTransport = require('nodemailer-smtp-transport'),
+    os = require('os');
 
 
 module.exports = {
@@ -10,11 +11,11 @@ module.exports = {
    * @param  {[type]}
    * @return {[type]}
    */
-  send: function(req, res) {
+  send: function(req, res, next) {
 
     // Initialize transport object and authenticate user
     var transporter = nodemailer.createTransport(smtpTransport({
-      host: 'localhost',
+      host: os.hostname(),
       port: 25,
       auth: {
         user: req.body.username,
@@ -43,6 +44,7 @@ module.exports = {
         res.json({
           "message": "Message sent successfully"
         });
+        next();
       }
 
     });

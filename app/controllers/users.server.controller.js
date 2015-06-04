@@ -1,6 +1,7 @@
 require('../models/user.server.model');
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    _ = require('lodash');
 
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
    * @param  {[type]}
    * @return {[type]}
    */
-  create: function(req, res) {
+  create: function(req, res, next) {
 
     var user = new User(req.body);
     user._token = user.createToken(user.username);
@@ -22,6 +23,7 @@ module.exports = {
         return res.status(500).send(err);
       } else {
         res.json(user);
+        next();
       }
 
     });
@@ -34,7 +36,7 @@ module.exports = {
    * @param  {[type]}
    * @return {[type]}
    */
-  update: function(req, res) {
+  update: function(req, res, next) {
 
     var userId = req.params.userId;
     var accessToken = req.query.access_token;
@@ -58,6 +60,7 @@ module.exports = {
             res.json({
               "message": "Update successful"
             });
+            next();
           }
         });
         
@@ -72,12 +75,14 @@ module.exports = {
    * @param  {[type]}
    * @return {[type]}
    */
-  delete: function(req, res) {
+  delete: function(req, res, next) {
 
     var userId = req.params.userId;
     var accessToken = req.query.access_token;
 
-    if(!accessToken) { return res.json({ "error": "No access token specified" }); }
+    if(!accessToken) { 
+      return res.json({ "error": "No access token specified" }); 
+    }
 
     User.findOne({"_id": userId}, function(err, user){
 
@@ -85,7 +90,9 @@ module.exports = {
         return res.status(500).send(err);
       } else {
 
-        if(user._token !== accessToken) { return res.json({ "error": "Invalid access token" }); }
+        if(user._token !== accessToken) { 
+          return res.json({ "error": "Invalid access token" }); 
+        }
 
         user.remove(function(err){
           if (err){
@@ -94,6 +101,7 @@ module.exports = {
             res.json({
               "message": "Delete successful"
             });
+            next();
           }
         });
       }
@@ -107,7 +115,7 @@ module.exports = {
    * @param  {[type]}
    * @return {[type]}
    */
-  select: function(req, res) {
+  select: function(req, res, next) {
 
     var userId = req.params.userId;
 
@@ -122,6 +130,7 @@ module.exports = {
           "username": user.username,
           "created": user.created
         });
+        next();
       }
 
     });
@@ -133,14 +142,22 @@ module.exports = {
    * @param  {[type]}
    * @return {[type]}
    */
-  list: function(req, res) {
+  list: function(req, res, next) {
 
     User.find(function(err, users){
 
       if (err) {
         return res.status(500).send(err);
       } else {
+        users = _.map(users, function(user){
+          return {
+            "_id": user._id,
+            "username": user.username,
+            "created": user.created
+          };
+        })
         res.json(users);
+        next();
       }
     });
 

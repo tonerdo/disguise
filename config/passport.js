@@ -26,6 +26,7 @@ module.exports = function(passport) {
 
         if(err) { return done(err); }
         if(!user) { return done(null, false, { message: 'Incorrect username or password' }); }
+        
         return done(null, {
           "_id": user._id,
           "username": user.username,
