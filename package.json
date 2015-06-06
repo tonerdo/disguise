@@ -40,7 +40,6 @@
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "smtp-connection": "^1.2.0",
-    "smtp-protocol": "^2.4.6",
     "smtp-server": "^1.4.0"
   }
 }

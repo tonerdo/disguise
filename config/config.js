@@ -4,7 +4,7 @@ module.exports = function() {
     "port": process.env.PORT || 8080
   };
 
-  var smtp = {
+  var mail = {
     "port": 1025
   };
 
@@ -15,6 +15,6 @@ module.exports = function() {
   return {
     "server": server,
     "db": db,
-    "smtp": smtp
+    "mail": mail
   };
 }

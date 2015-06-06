@@ -8,12 +8,12 @@ mongoose.connection.once('open', function(){
 });
 
 var appServer = require('./config/express')();
-var smtpServer = require('./config/smtp-server')();
+var mailServer = require('./config/mailserver')();
 
 appServer.listen(config.server.port, function(){
   console.log("Server listening on port " + config.server.port);
 });
-smtpServer.listen(config.smtp.port);
+mailServer.listen(config.mail.port);
 
 exports = module.exports = appServer;
-exports = module.exports = smtpServer;
+exports = module.exports = mailServer;
