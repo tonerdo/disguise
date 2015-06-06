@@ -1,7 +1,8 @@
 require('dotenv').load();
 var nodemailer = require('nodemailer'),
     smtpTransport = require('nodemailer-smtp-transport'),
-    os = require('os');
+    os = require('os'),
+    config = require('../../config/config');
 
 
 module.exports = {
@@ -15,14 +16,16 @@ module.exports = {
   send: function(req, res, next) {
 
     // Initialize transport object and authenticate user
-    var transporter = nodemailer.createTransport(smtpTransport({
-      host: os.hostname(),
-      port: 1025,
-      auth: {
-        user: req.body.username,
-        pass: req.body.password
-      }
-    }));
+    // var transporter = nodemailer.createTransport(smtpTransport({
+    //   host: os.hostname(),
+    //   port: 1025,
+    //   auth: { 
+    //     user: req.body.username,
+    //     pass: req.body.password
+    //   }
+    // }));
+    
+    var transporter = nodemailer.createTransport();
 
     // Send the email
     transporter.sendMail({

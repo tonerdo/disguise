@@ -1,4 +1,5 @@
-var smtp = require('smtp-server').SMTPServer;
+var smtp = require('smtp-server').SMTPServer,
+    fs = require('fs');
 
 require('../app/models/user.server.model');
 var mongoose = require('mongoose'),
@@ -25,7 +26,16 @@ module.exports = function() {
     onData: function(stream, session, callback){
       console.log("SMTP Server: Data received!");
       stream.pipe(process.stdout); // print message to console
-      stream.on('end', callback);
+      var content = '';
+      stream.on('data', function(chunk){
+        content += chunk;
+      });
+      stream.on('end', function(){
+        fs.writeFile('content.txt', content, function(err){
+          if(!err) console.log("Output written to file");
+          callback();
+        });
+      });
     }
 
   });
