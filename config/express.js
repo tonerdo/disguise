@@ -1,7 +1,8 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    passport = require('passport');
+    passport = require('passport'),
+    jwt = require('jwt-simple');
 
 var User = require('../app/models/user.server.model');
 
@@ -24,7 +25,7 @@ module.exports = function() {
   app.use(passport.session());
 
   // Include passport config
-  require('./passport')(passport);
+  require('./passport')(app, passport, jwt);
 
   // Include all routes
   require('../app/routes/users.server.routes')(app, passport);

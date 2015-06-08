@@ -12,9 +12,14 @@ module.exports = function() {
     "uri": process.env.MONGODB_DEV || process.env.MONGODB_PROD
   };
 
+  var jwt = {
+    "secret": "IHopeNobodyCanGuessThisSecret"
+  }
+
   return {
     "server": server,
     "db": db,
-    "mail": mail
+    "mail": mail,
+    "jwt": jwt
   };
 }

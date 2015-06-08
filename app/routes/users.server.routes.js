@@ -1,4 +1,5 @@
 var users = require('../controllers/users.server.controller.js');
+var jwtauth = require('../../config/jwtauth.js');
 
 module.exports = function(app, passport) {
   
@@ -10,8 +11,8 @@ module.exports = function(app, passport) {
     res.json(req.user);
   });
 
-  app.route('/api/users/:userId')
+  app.route('/api/users/:user_id')
         .get(users.select)
-        .put(users.update)
-        .delete(users.delete);
-}
+        .put(jwtauth, users.update)
+        .delete(jwtauth, users.delete);
+};

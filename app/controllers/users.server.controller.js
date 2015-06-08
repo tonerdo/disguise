@@ -8,14 +8,13 @@ module.exports = {
 
   /**
    * Create new user
-   * @param  {[type]}
-   * @param  {[type]}
-   * @return {[type]}
+   * @param  {Object}
+   * @param  {Object}
+   * @param  {Function}
    */
   create: function(req, res, next) {
 
     var user = new User(req.body);
-    user._token = user.createToken(user.username);
 
     user.save(function(err){
 
@@ -32,38 +31,19 @@ module.exports = {
 
   /**
    * Update a user
-   * @param  {[type]}
-   * @param  {[type]}
-   * @return {[type]}
+   * @param  {Object}
+   * @param  {Object}
+   * @param  {Function}
    */
   update: function(req, res, next) {
 
-    var userId = req.params.userId;
-    var accessToken = req.query.access_token;
-
-    if(!accessToken) { return res.json({ "error": "No access token specified" }); }
-
-    User.findOne({"_id": userId}, function(err, user){
+    req.user.username = req.body.username;
+    req.user.save(function(err){
 
       if (err) {
         return res.status(500).send(err);
       } else {
-
-        if(user._token !== accessToken) { return res.json({ "error": "Invalid access token" }); }
-
-        user.username = req.body.username;
-        user.save(function(err, affected){
-          
-          if (err) {
-            return res.status(500).send(err);
-          } else {
-            res.json({
-              "message": "Update successful"
-            });
-            next();
-          }
-        });
-        
+        res.json({ "message": "Update successful" });
       }
 
     });
@@ -71,39 +51,18 @@ module.exports = {
 
   /**
    * Delete a user
-   * @param  {[type]}
-   * @param  {[type]}
-   * @return {[type]}
+   * @param  {Object}
+   * @param  {Object}
+   * @param  {Function}
    */
   delete: function(req, res, next) {
 
-    var userId = req.params.userId;
-    var accessToken = req.query.access_token;
+    req.user.remove(function(err){
 
-    if(!accessToken) { 
-      return res.json({ "error": "No access token specified" }); 
-    }
-
-    User.findOne({"_id": userId}, function(err, user){
-
-      if (err) {
+      if (err){
         return res.status(500).send(err);
       } else {
-
-        if(user._token !== accessToken) { 
-          return res.json({ "error": "Invalid access token" }); 
-        }
-
-        user.remove(function(err){
-          if (err){
-            return res.status(500).send(err);
-          } else {
-            res.json({
-              "message": "Delete successful"
-            });
-            next();
-          }
-        });
+        res.json({ "message": "Delete successful" });
       }
 
     });
@@ -111,9 +70,9 @@ module.exports = {
 
   /**
    * Return a single user
-   * @param  {[type]}
-   * @param  {[type]}
-   * @return {[type]}
+   * @param  {Object}
+   * @param  {Object}
+   * @param  {Function}
    */
   select: function(req, res, next) {
 
@@ -126,9 +85,9 @@ module.exports = {
       } else {
 
         res.json({
-          "_id": user._id,
+          "user_id": user._id,
           "username": user.username,
-          "created": user.created
+          "created_on": user.created
         });
         next();
       }
@@ -138,9 +97,9 @@ module.exports = {
 
   /**
    * Return all users
-   * @param  {[type]}
-   * @param  {[type]}
-   * @return {[type]}
+   * @param  {Object}
+   * @param  {Object}
+   * @param  {Function}
    */
   list: function(req, res, next) {
 
@@ -151,9 +110,9 @@ module.exports = {
       } else {
         users = _.map(users, function(user){
           return {
-            "_id": user._id,
+            "user_id": user._id,
             "username": user.username,
-            "created": user.created
+            "created_on": user.created
           };
         })
         res.json(users);
@@ -163,7 +122,7 @@ module.exports = {
 
   }
 
-}
+};
 
 
 
