@@ -5,7 +5,7 @@ module.exports = function() {
   };
 
   var mail = {
-    "port": 1025
+    "port": process.env.MAIL_PORT
   };
 
   var db = {

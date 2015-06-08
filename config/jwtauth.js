@@ -10,7 +10,7 @@ module.exports = function(req, res, next) {
 
   var userId = req.params.user_id;
   var accessToken = req.query.access_token;
-  
+
   // Check if access token was sent
   if(!accessToken) { 
     res.status(401).send({ "error": "No access token specified" });
@@ -43,6 +43,7 @@ module.exports = function(req, res, next) {
     } catch(err) {
       res.status(400).send({ "error:": "Invalid access token"});
     }
+    
   }
 
 };
