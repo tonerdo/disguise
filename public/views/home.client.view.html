@@ -1,0 +1,130 @@
+<style type="text/css" scoped>
+body {
+  background-image: url('img/background/02.jpg');
+  background-position: left top;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+}
+
+</style>
+
+<p class="gutter"></p>
+<div class="row">
+
+  <div class="col-lg-3 col-md-3 col-sm-3"></div>
+
+  <div class="col-lg-6 col-md-6 col-sm-6">
+
+    <center>
+      <img class="logo" src="img/logo/disgui.se.png" />
+    </center>
+
+    <form role="form" class="reglog">
+
+      <div class="alert alert-info" ng-show="alerts.info.show" style="margin-bottom: 10px;" role="alert">
+        {{alerts.info.text}}
+      </div>
+      <div class="alert alert-success" ng-show="alerts.success.show" style="margin-bottom: 10px;" role="alert">
+        {{alerts.success.text}}
+      </div>
+      <div class="alert alert-danger" ng-show="alerts.error.show" style="margin-bottom: 10px;" role="alert">
+        {{alerts.error.text}}
+      </div>
+
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Username" ng-model="user.username" aria-describedby="basic-addon">
+        <span class="input-group-addon" id="basic-addon">@disgui.se</span>
+      </div>
+
+      <input type="password" class="form-control" id="pwd" ng-model="user.password" placeholder="Password">
+
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left-button">
+          <button type="button" class="btn btn-success">
+          <span class="glyphicon glyphicon-lock"></span>
+            Login
+          </button>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 right-button">
+          <button type="button" class="btn btn-info" ng-click="register()">
+          <span class="glyphicon glyphicon-plus"></span>
+            Register
+          </button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-3"></div>
+
+</div>
+
+
+<div class="row">
+
+  <div class="col-lg-2 col-md-2 col-sm-2"></div>
+
+  <div class="col-lg-8 col-md-8 col-sm-8" style="text-align: center;">
+    <h2 id="desc">
+      A quick, lightweight and disposable email service.<br>
+      <span class="scratchpad">Evade spam</span>
+    </h2>
+  </div>
+
+  <div class="col-lg-2 col-md-2 col-sm-2"></div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>Made with <span class="glyphicon glyphicon-heart"></span> Lagos, Nigeria.</p>
+  </div>
+</footer>
+
+<link rel="stylesheet" type="text/css" href="lib/typed.js/dist/typed.css">
+<script type="text/javascript" src="lib/typed.js/dist/typed.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $(".scratchpad").typed({
+      strings: [
+        "Evade spam.", 
+        "Protect your privacy.", 
+        "Whistle-blow."
+      ],
+      typeSpeed: 1,
+      loop: true,
+      backDelay: 1000
+    });
+  });
+</script>
+
+
+
+
+
+
+
+

@@ -1,6 +1,5 @@
 var smtp = require('smtp-server').SMTPServer,
-    fs = require('fs'),
-    os = require('os');
+    fs = require('fs');
 
 require('../app/models/user.server.model');
 var mongoose = require('mongoose'),
@@ -15,7 +14,7 @@ module.exports = function() {
 
     disabledCommands: ['STARTTLS', 'AUTH'],
     hideSTARTTLS: true,
-    banner: os.hostname(),
+    banner: process.env.SMTP_BANNER,
     onRcptTo: function(address, session, callback){
 
       var recipient = address.address;

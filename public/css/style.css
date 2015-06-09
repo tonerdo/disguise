@@ -1,0 +1,91 @@
+@font-face {
+  font-family: Raleway;
+  src: url('../fonts/raleway/raleway_thin-webfont.woff');
+}
+
+.logo {
+  width: 300px;
+}
+
+h2#desc {
+  color: #F0E68C;
+  font-family: Raleway, sans-serif;
+  line-height: 1.4em;
+}
+
+.reglog {
+  margin: auto;
+}
+
+  .reglog button {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .reglog .input-group {
+    margin-bottom: 5px;
+  }
+
+footer p {
+  color: #F0E68C;
+  font-family: Raleway, sans-serif;
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{   
+
+  .reglog {
+    width: 70%;
+  }
+
+    .reglog .left-button {
+      padding-right: 1px;
+    }
+
+    .reglog .right-button {
+      padding-left: 1px;
+    }
+
+  p.gutter {
+    margin-top: 75px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) 
+{  
+
+  .reglog {
+    width: 70%;
+  }
+
+    .reglog .left-button {
+      padding-right: 1px;
+    }
+
+    .reglog .right-button {
+      padding-left: 1px;
+    }
+
+  p.gutter {
+    margin-top: 75px;
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) 
+{   
+
+  .reglog {
+    width: 70%;
+  }
+
+    .reglog .left-button {
+      padding-right: 1px;
+    }
+
+    .reglog .right-button {
+      padding-left: 1px;
+    }
+}

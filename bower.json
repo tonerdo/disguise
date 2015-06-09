@@ -21,6 +21,7 @@
     "angular": "~1.4.0",
     "angular-ui-router": "~0.2.15",
     "angular-sanitize": "~1.4.0",
-    "bootstrap": "~3.3.4"
+    "bootstrap": "~3.3.4",
+    "typed.js": "*"
   }
 }
