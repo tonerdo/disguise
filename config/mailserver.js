@@ -17,13 +17,12 @@ module.exports = function() {
     banner: process.env.SMTP_BANNER,
     onRcptTo: function(address, session, callback){
 
-      var recipient = address.address;
+      var recipient = address.address.toLowerCase();
       var username = recipient.split('@')[0];
-      username = username.toLowerCase();
       var domain = recipient.split('@')[1];
 
       if(domain !== 'disgui.se') {
-        return callback(new Error('Only emails ending in @disgui.se are allowed'));
+        return callback(new Error('Domain not allowed'));
       }
 
       User.findOne({"username": username}, function(err, user){
@@ -60,7 +59,7 @@ module.exports = function() {
         // Parse email message
         mailparser.write(content);
         mailparser.end();
-        callback(null, 'Message queued');
+        callback(null, 'Message delivered');
       });
       
     }
@@ -73,13 +72,30 @@ module.exports = function() {
    * @return {SMTPServer}
    */
   mail.on('error', function(err){
-    console.log('Error: ' + err.message);
+    console.log('Mail server error: ' + err.message);
   });
 
   // Mail parser event handlers
   mailparser.on('end', function(message){
-    console.log('Message recieved!');
-    console.log(message);
+
+    console.log('Message recieved to mailbox: ' + message.to[0].address);
+
+    var recipient = message.to[0].address;
+    var username = recipient.split('@')[0];
+    username = username.toLowerCase();
+
+    var email = JSON.stringify(message);
+
+    // Insert message details into database
+    User.findOneAndUpdate(
+      username,
+      {$push: {"received": email}},
+      {safe: true, upsert: true},
+      function(err, model) {
+        if(err) console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
+      }
+    );
+
   });
 
   return mail;

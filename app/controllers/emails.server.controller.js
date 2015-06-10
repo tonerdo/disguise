@@ -18,7 +18,7 @@ module.exports = {
   send: function(req, res, next) {
 
     var transporter = nodemailer.createTransport();
-    var username = req.body.from;
+    var username = req.body.from.toLowerCase();
 
     // Check if user exists
     User.findOne({"username": username}, function(err, user){
@@ -59,7 +59,7 @@ module.exports = {
               {$push: {"sent": email}},
               {safe: true, upsert: true},
               function(err, model) {
-                if(err) console.log(err);
+                if(err) console.log('Sent messages append error: ' + err);
               }
             );
             
