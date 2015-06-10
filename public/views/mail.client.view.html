@@ -1,1 +1,41 @@
-Mail view
+<div id="sidebar">
+  <a ui-sref="home">
+    <img src="img/logo/logo.png">
+  </a>
+  <div id="sidebar-menu">
+    <a ui-sref="mail.compose">
+      <p ng-class="{'highlight': highlight('/mail/compose')}">
+        <span class="glyphicon glyphicon-edit"></span>
+        <span>COMPOSE</span>
+        <span class="label label-primary">5</span>
+      </p>
+    </a>
+    <a ui-sref="mail.inbox">
+      <p ng-class="{'highlight': highlight('/mail/inbox')}">
+        <span class="glyphicon glyphicon-inbox"></span>
+        <span>INBOX</span>
+        <span class="label label-primary">5</span>
+      </p>
+    </a>
+    <a ui-sref="mail.sent">
+      <p ng-class="{'highlight': highlight('/mail/sent')}">
+        <span class="glyphicon glyphicon-send"></span>
+        <span>SENT</span>
+        <span class="label label-primary">5</span>
+      </p>
+    </a>
+    <a ui-sref="mail.drafts">
+      <p ng-class="{'highlight': highlight('/mail/drafts')}">
+        <span class="glyphicon glyphicon-floppy-saved"></span>
+        <span>DRAFTS</span>
+        <span class="label label-primary">5</span>
+      </p>
+    </a>
+  </div>
+  <p class="divider"></p>
+  <button class="btn btn-danger btn-sm">
+    <span class="glyphicon glyphicon-trash"></span>
+    <span>DISPOSE</span>
+  </button>
+</div>
+<div id="main" ui-view></div>

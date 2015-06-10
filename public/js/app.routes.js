@@ -4,17 +4,30 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
  
   $stateProvider
     .state('home', {
-        url:'/',
+        url: '/',
         templateUrl: './views/home.client.view.html',
         controller: 'HomeCtrl'
     })
     .state('mail', {
-        url:'/mail',
-        templateUrl: './views/mail.client.view.html'
+        url: '/mail',
+        templateUrl: './views/mail.client.view.html',
+        controller: 'MailCtrl'
     })
-    .state('inbox', {
-        url:'/mail/inbox',
+    .state('mail.compose', {
+        url: '/compose',
+        templateUrl: './views/compose.client.view.html'
+    })
+    .state('mail.inbox', {
+        url:'/inbox',
         templateUrl: './views/inbox.client.view.html'
+    })
+    .state('mail.sent', {
+        url: '/sent',
+        templateUrl: './views/sent.client.view.html'
+    })
+    .state('mail.drafts', {
+        url: '/drafts',
+        templateUrl: './views/drafts.client.view.html'
     });
 
 }]);
