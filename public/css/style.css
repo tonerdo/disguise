@@ -11,6 +11,7 @@ h2#desc {
   color: #F0E68C;
   font-family: Raleway, sans-serif;
   line-height: 1.4em;
+  margin-top: 35px;
 }
 
 .required {
@@ -20,6 +21,7 @@ h2#desc {
 
 .reglog {
   margin: auto;
+  margin-top: 30px;
 }
 
   .reglog button {
