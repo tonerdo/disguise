@@ -77,7 +77,7 @@ module.exports = {
    */
   select: function(req, res, next) {
 
-    var userId = req.params.userId;
+    var userId = req.params.user_id;
 
     User.findOne({"_id": userId}, function(err, user){
 

@@ -4,10 +4,55 @@ var nodemailer = require('nodemailer'),
 
 require('../models/user.server.model');
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    _ = require('lodash');
 
 
 module.exports = {
+
+
+  received: function(req, res, next) {
+
+    var userId = req.params.user_id;
+
+    User.findOne({"_id": userId}, function(err, user){
+
+      if (err) {
+        return res.status(500).send(err);
+      } else {
+
+        var received = _.map(user.received, function(msg){
+          return JSON.parse(msg);
+        });
+        res.json(received);
+        next();
+      }
+
+    });
+
+  },
+
+  sent: function(req, res, next) {
+
+    var userId = req.params.user_id;
+
+    User.findOne({"_id": userId}, function(err, user){
+
+      if (err) {
+        return res.status(500).send(err);
+      } else {
+
+        var sent = _.map(user.sent, function(msg){
+          return JSON.parse(msg);
+        });
+        res.json(sent);
+        next();
+      }
+
+    });
+
+  },
+
 
   /**
    * Send an email
