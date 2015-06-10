@@ -51,11 +51,13 @@ module.exports = function() {
       });
 
       stream.on('end', function(){
+        
+        // fs.writeFile('message.txt', content, function(err){
+        //   if(err) console.log(err);
+        //   else console.log('Saved to file!');
+        // });
+        
         // Parse email message
-        fs.writeFile('message.txt', content, function(err){
-          if(err) console.log(err);
-          else console.log('Saved to file!');
-        });
         mailparser.write(content);
         mailparser.end();
         callback(null, 'Message queued');

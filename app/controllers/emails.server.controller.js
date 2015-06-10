@@ -2,6 +2,10 @@ require('dotenv').load();
 var nodemailer = require('nodemailer'),
     smtpTransport = require('nodemailer-smtp-transport');
 
+require('../models/user.server.model');
+var mongoose = require('mongoose'),
+    User = mongoose.model('User');
+
 
 module.exports = {
 
@@ -15,30 +19,44 @@ module.exports = {
 
     var transporter = nodemailer.createTransport();
 
+    var username = req.body.from;
+    
+    // Check if user exists
+    User.findOne({"username": username}, function(err, user){
+
+      if (err) {
+        res.status(500).send({
+          "message": "Error retrieving user",
+          "error": err
+        });
+      } else if(!user) {
+        res.status(500).send({
+          "message": "User does not exist"
+        });
+      }
+
+    });
+
+    // Append domain name to req.body.from
+    req.body.from += '@disgui.se';
+
     // Send the email
-    transporter.sendMail({
-      from: req.body.username + '@disgui.se',
-      to: req.body.to,
-      subject: req.body.subject,
-      text: req.body.message,
-      html: req.body.message
-    }, 
+    transporter.sendMail(req.body, function(err, info){
 
-    function(error, response){
+      if(err){
 
-      if(error){
         res.status(500).send({
           "message": "Message sending failed",
-          "error": error
+          "error": err
         });
+
       } else {
 
         // Insert message details into database
         res.json({
           "message": "Message sent successfully",
-          "response": response
+          "response": info
         });
-        next();
       }
 
     });
@@ -48,4 +66,41 @@ module.exports = {
   }
 
 }
+
+// {
+//   "message": "Message sent successfully",
+//   "response": {
+//     "accepted": [
+//       "tonecash17@gmail.com",
+//       "prosper.otemuyiwa@andela.co",
+//       "oluwatoni.sodara@andela.co"
+//     ],
+//     "rejected": [
+//       "toni.edward@outlook.com"
+//     ],
+//     "pending": [],
+//     "errors": [
+//       {
+//         "code": "EENVELOPE",
+//         "response": "550 OU-002 (SNT004-MC1F6) Unfortunately, messages from 197.253.32.226 weren't sent. Please contact your Internet service provider since part of their network is on our block list. You can also refer your provider to http://mail.live.com/mail/troubleshooting.aspx#errors.",
+//         "responseCode": 550,
+//         "domain": "outlook.com",
+//         "exchange": "mx1.hotmail.com",
+//         "recipients": [
+//             "toni.edward@outlook.com"
+//         ]
+//       }
+//     ],
+//     "envelope": {
+//       "from": "toni@disgui.se",
+//       "to": [
+//         "tonecash17@gmail.com",
+//         "prosper.otemuyiwa@andela.co",
+//         "oluwatoni.sodara@andela.co",
+//         "toni.edward@outlook.com"
+//       ]
+//     },
+//     "messageId": "1433931634485-391d3056-c9d66027-e4027b43@disgui.se"
+//   }
+// }
 
