@@ -19,6 +19,7 @@ module.exports = function() {
 
       var recipient = address.address;
       var username = recipient.split('@')[0];
+      username = username.toLowerCase();
       var domain = recipient.split('@')[1];
 
       if(domain !== 'disgui.se') {
@@ -55,8 +56,8 @@ module.exports = function() {
           if(err) console.log(err);
           else console.log('Saved to file!');
         });
-        // mailparser.write(content);
-        // mailparser.end();
+        mailparser.write(content);
+        mailparser.end();
         callback(null, 'Message queued');
       });
       
@@ -82,3 +83,32 @@ module.exports = function() {
   return mail;
 
 }
+
+// { 
+//   text: 'Hello Toni,\nJust sending a message to say hello to you.\nTake care',
+//   headers:
+//    { 
+//      from: '"Toni Solarin-Sodara" <toni.edward@outlook.com>',
+//      to: '<toni@disgui.se>',
+//      subect: 'Trying my smtp server' 
+//    },
+//   priority: 'normal',
+//   from: [ 
+//     { 
+//       address: 'toni.edward@outlook.com',
+//       name: 'Toni Solarin-Sodara' 
+//     } 
+//   ],
+//   to: [ 
+//     { 
+//       address: 'toni@disgui.se', 
+//       name: '' 
+//     } 
+//   ] 
+// }
+
+
+
+
+
+

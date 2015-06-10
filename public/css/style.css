@@ -13,6 +13,11 @@ h2#desc {
   line-height: 1.4em;
 }
 
+.required {
+  color: #F0E68C;
+  font-size: 12px;
+}
+
 .reglog {
   margin: auto;
 }
@@ -22,8 +27,8 @@ h2#desc {
     width: 100%;
   }
 
-  .reglog .input-group {
-    margin-bottom: 5px;
+  .reglog input[type=password] {
+    margin-top: 5px;
   }
 
 footer p {

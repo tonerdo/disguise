@@ -25,7 +25,7 @@ module.exports = function(app, passport, jwt) {
   // Handle login
   passport.use('local', new LocalStrategy(
     function(username, password, done){
-
+      username = username.toLowerCase();
       User.findOne({"username": username, "password": password}, function(err, user){
 
         if(err) { return done(err); }
@@ -39,6 +39,7 @@ module.exports = function(app, passport, jwt) {
         
         return done(null, {
           "user_id": user._id,
+          "username": user.username,
           "created_on": user.created,
           "access_token": token,
           "expires_at": expires

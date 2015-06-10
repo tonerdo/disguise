@@ -15,6 +15,7 @@ module.exports = {
   create: function(req, res, next) {
 
     var user = new User(req.body);
+    user.username = req.body.username.toLowerCase();
 
     user.save(function(err){
 
@@ -37,7 +38,7 @@ module.exports = {
    */
   update: function(req, res, next) {
 
-    req.user.username = req.body.username;
+    req.user.username = req.body.username.toLowerCase();
     req.user.save(function(err){
 
       if (err) {
