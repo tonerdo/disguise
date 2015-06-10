@@ -36,7 +36,7 @@ module.exports = {
 
         // Append domain name to req.body.from
         req.body.from += '@disgui.se';
-        req.body.date = Date.now;
+        req.body.date = Date.now();
 
         // Send the email
         transporter.sendMail(req.body, function(err, info){
