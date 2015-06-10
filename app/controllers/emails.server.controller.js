@@ -18,9 +18,8 @@ module.exports = {
   send: function(req, res, next) {
 
     var transporter = nodemailer.createTransport();
-
     var username = req.body.from;
-    
+
     // Check if user exists
     User.findOne({"username": username}, function(err, user){
 
@@ -33,30 +32,46 @@ module.exports = {
         res.status(500).send({
           "message": "User does not exist"
         });
-      }
-
-    });
-
-    // Append domain name to req.body.from
-    req.body.from += '@disgui.se';
-
-    // Send the email
-    transporter.sendMail(req.body, function(err, info){
-
-      if(err){
-
-        res.status(500).send({
-          "message": "Message sending failed",
-          "error": err
-        });
-
       } else {
 
-        // Insert message details into database
-        res.json({
-          "message": "Message sent successfully",
-          "response": info
+        // Append domain name to req.body.from
+        req.body.from += '@disgui.se';
+        req.body.date = Date.now;
+
+        // Send the email
+        transporter.sendMail(req.body, function(err, info){
+
+          if(err){
+
+            res.status(500).send({
+              "message": "Message sending failed",
+              "error": err
+            });
+
+          } else {
+
+            req.body.messageId = info.messageId;
+            var email = JSON.stringify(req.body);
+
+            // Insert message details into database
+            User.findByIdAndUpdate(
+              user._id,
+              {$push: {"sent": email}},
+              {safe: true, upsert: true},
+              function(err, model) {
+                if(err) console.log(err);
+              }
+            );
+            
+            // Send response
+            res.json({
+              "message": "Message sent successfully",
+              "response": info
+            });
+          }
+
         });
+
       }
 
     });

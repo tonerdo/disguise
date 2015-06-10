@@ -17,7 +17,10 @@ var UserSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
-  }
+  },
+
+  sent: [String],
+  received: [String]
 
 });
 
