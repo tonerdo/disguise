@@ -25,6 +25,7 @@
     "typed.js": "*",
     "angular-cookies": "~1.4.0",
     "ng-tags-input": "~2.3.0",
-    "textAngular": "~1.4.1"
+    "textAngular": "~1.4.1",
+    "ng-lodash": "~0.2.3"
   }
 }

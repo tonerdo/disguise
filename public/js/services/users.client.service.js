@@ -14,4 +14,4 @@ app.factory('UserSvc', ['$http', function($http){
 
   return users;
 
-}])
+}]);
