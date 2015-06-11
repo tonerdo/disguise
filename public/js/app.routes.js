@@ -15,7 +15,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     })
     .state('mail.compose', {
         url: '/compose',
-        templateUrl: './views/compose.client.view.html'
+        templateUrl: './views/compose.client.view.html',
+        controller: 'ComposeCtrl'
     })
     .state('mail.inbox', {
         url:'/inbox',
@@ -24,10 +25,6 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     .state('mail.sent', {
         url: '/sent',
         templateUrl: './views/sent.client.view.html'
-    })
-    .state('mail.drafts', {
-        url: '/drafts',
-        templateUrl: './views/drafts.client.view.html'
     });
 
 }]);

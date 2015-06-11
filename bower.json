@@ -23,6 +23,8 @@
     "angular-sanitize": "~1.4.0",
     "bootstrap": "~3.3.4",
     "typed.js": "*",
-    "angular-cookies": "~1.4.0"
+    "angular-cookies": "~1.4.0",
+    "ng-tags-input": "~2.3.0",
+    "textAngular": "~1.4.1"
   }
 }

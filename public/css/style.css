@@ -38,6 +38,8 @@ footer p {
   font-family: Raleway, sans-serif;
 }
 
+
+/* Mail View Styles */
 #sidebar {
   position: fixed;
   top: 0;
@@ -63,9 +65,27 @@ footer p {
   margin-right: 10px;
 }
 
-#sidebar img {
-  margin-bottom: 15px;
+.account {
+  color: #ccc;
+  font-family: Raleway;
+  text-align: left;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
+  .account:hover {
+    color: #ccc;
+    background-color: #222;
+  }
+
+  #sidebar img {
+    margin-bottom: 15px;
+  }
+
+  #sidebar > a {
+    text-decoration: none;
+  }
 
   #sidebar #sidebar-menu {
     
@@ -100,6 +120,11 @@ footer p {
 
 #main {
   margin-left: 220px;
+}
+
+.page-header {
+  font-family: Raleway;
+  font-weight: bold;
 }
 
 /* Large devices (large desktops, 1200px and up) */

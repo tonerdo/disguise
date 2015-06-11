@@ -1,4 +1,5 @@
-app.controller('HomeCtrl', ['$scope', '$location', 'UserSvc', function($scope, $location, UserSvc){
+app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc', 
+  function($scope, $location, $cookies, UserSvc){
   
   $scope.user = {};
 
@@ -107,7 +108,7 @@ app.controller('HomeCtrl', ['$scope', '$location', 'UserSvc', function($scope, $
     UserSvc.login($scope.user)
       .success(function(data, status){
         if(status == 200){
-          console.log(data);
+          $cookies.put('user', JSON.stringify(data));
           showSuccess('Login was successful. Redirecting...');
           $location.path('/mail/inbox');
         }

@@ -2,33 +2,32 @@
   <a ui-sref="home">
     <img src="img/logo/logo.png">
   </a>
+  <a href="">
+    <p class="account">
+      <span class="glyphicon glyphicon-user"></span>&nbsp;
+      {{rootUser.username}}
+      <span class="glyphicon glyphicon-cog" style="float: right; margin-right: 15px; font-size: 16px;"></span>
+    </p>
+  </a>
+  <p class="divider"></p>
   <div id="sidebar-menu">
     <a ui-sref="mail.compose">
       <p ng-class="{'highlight': highlight('/mail/compose')}">
-        <span class="glyphicon glyphicon-edit"></span>
+        <span class="glyphicon glyphicon-edit"></span>&nbsp;
         <span>COMPOSE</span>
-        <span class="label label-primary">5</span>
       </p>
     </a>
     <a ui-sref="mail.inbox">
       <p ng-class="{'highlight': highlight('/mail/inbox')}">
-        <span class="glyphicon glyphicon-inbox"></span>
+        <span class="glyphicon glyphicon-inbox"></span>&nbsp;
         <span>INBOX</span>
         <span class="label label-primary">5</span>
       </p>
     </a>
     <a ui-sref="mail.sent">
       <p ng-class="{'highlight': highlight('/mail/sent')}">
-        <span class="glyphicon glyphicon-send"></span>
+        <span class="glyphicon glyphicon-send"></span>&nbsp;
         <span>SENT</span>
-        <span class="label label-primary">5</span>
-      </p>
-    </a>
-    <a ui-sref="mail.drafts">
-      <p ng-class="{'highlight': highlight('/mail/drafts')}">
-        <span class="glyphicon glyphicon-floppy-saved"></span>
-        <span>DRAFTS</span>
-        <span class="label label-primary">5</span>
       </p>
     </a>
   </div>
