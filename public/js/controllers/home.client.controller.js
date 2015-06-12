@@ -117,7 +117,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc',
         if(status == 401){
           showError('Invalid username or password');
         } else {
-          showError('Sorry, we can\'t complete your request at this time');
+          showError('Sorry, we couldn\'t complete your request. Please try again.');
         }
       });
 

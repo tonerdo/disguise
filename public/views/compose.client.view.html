@@ -1,20 +1,43 @@
 <h2 class="page-header">Compose</h2>
 <form role="form">
+
+  <div class="alert alert-success" ng-show="success" style="margin-bottom: 10px;" role="alert">
+    <span class="glyphicon glyphicon-ok"></span>&nbsp;Your message was sent successfully
+  </div>
+  <div class="alert alert-danger" ng-show="error" style="margin-bottom: 10px;" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;
+    Sorry, we couldn't complete your request. Please try again
+  </div>
+
   <span style="float: right;">
     <a href="" ng-click="ccToggle()">Cc</a>&nbsp;
     <a href="" ng-click="bccToggle()">Bcc</a>
   </span>
   <div class="form-group">
     <label for="email">To:</label>
-    <tags-input class="bootstrap" placeholder="Recipients" min-length="5" ng-model='recipients'></tags-input>
+    <!-- ^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$ -->
+    <tags-input class="bootstrap" placeholder="Recipients" min-length="5" 
+                ng-model='recipients'
+                allowed-tags-pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$"
+                >
+    </tags-input>
+    <span ng-show="validationErrors.recipients.show" style="color: maroon; font-size: 12px;">Enter at least one recipient</span>
   </div>
   <div class="form-group" ng-show="showCc">
     <label for="cc">Cc:</label>
-    <tags-input class="bootstrap" placeholder="Cc" min-length="5" ng-model='cc'></tags-input>
+    <tags-input class="bootstrap" placeholder="Cc" min-length="5" 
+                ng-model='cc'
+                allowed-tags-pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$"
+                >
+    </tags-input>
   </div>
   <div class="form-group" ng-show="showBcc">
     <label for="bcc">Bcc:</label>
-    <tags-input class="bootstrap" placeholder="Bcc" min-length="5" ng-model='bcc'></tags-input>
+    <tags-input class="bootstrap" placeholder="Bcc" min-length="5" 
+                ng-model='bcc'
+                allowed-tags-pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$"
+                >
+    </tags-input>
   </div>
   <div class="form-group">
     <label for="subject">Subject:</label>

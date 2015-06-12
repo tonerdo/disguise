@@ -51,10 +51,7 @@ footer p {
 }
 
 .highlight {
-  background-color: #000;
-  color: #fff;
-  font-weight: bold;
-  border-left: 2px solid darkgoldenrod;
+  border-left: 3px solid darkgoldenrod;
 }
 
 .divider {
@@ -67,7 +64,6 @@ footer p {
 
 .account {
   color: #ccc;
-  font-family: Raleway;
   text-align: left;
   padding-left: 15px;
   padding-top: 10px;
@@ -92,12 +88,11 @@ footer p {
   }
 
     #sidebar #sidebar-menu p {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 8px;
+      padding-bottom: 8px;
       text-align: left;
       padding-left: 15px;
       font-size: 12px;
-      font-weight: bold;
       margin-top: -10px;
     }
 
@@ -115,7 +110,6 @@ footer p {
     #sidebar #sidebar-menu a {
       color: #fff;
       text-decoration: none;
-      font-family: Raleway;
     }
 
 #main {

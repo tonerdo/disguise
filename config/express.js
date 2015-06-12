@@ -2,13 +2,17 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     passport = require('passport'),
-    jwt = require('jwt-simple');
+    jwt = require('jwt-simple'),
+    morgan = require('morgan');
 
 var User = require('../app/models/user.server.model');
 
 module.exports = function() {
 
 	var app = express();
+
+  // HTTP request logger
+  app.use(morgan('dev'));
 
   // Use middleware
   app.use(bodyParser.urlencoded({ extended: true }));
