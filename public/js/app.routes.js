@@ -20,10 +20,21 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     })
     .state('mail.inbox', {
         url:'/inbox',
-        templateUrl: './views/inbox.client.view.html'
+        templateUrl: './views/inbox.client.view.html',
+        controller: 'InboxCtrl'
+    })
+    .state('mail.inboxmessages', {
+        url:'/inbox/:messageId',
+        templateUrl: './views/inbox.client.view.html',
+        controller: 'InboxCtrl'
     })
     .state('mail.sent', {
         url: '/sent',
+        templateUrl: './views/sent.client.view.html',
+        controller: 'SentCtrl'
+    })
+    .state('mail.sentmessages', {
+        url: '/sent/:messageId',
         templateUrl: './views/sent.client.view.html',
         controller: 'SentCtrl'
     });

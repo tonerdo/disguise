@@ -1,8 +1,15 @@
 <div id="message-list">
-  <div id="message" ng-repeat="message in sentMessages">
-    <a href="{{message.messageId}}">
+  <div id="message-item" ng-repeat="message in sentMessages">
+    <a href="#/mail/sent/{{message.messageId}}">
       <div class="to">{{message.to | stringify}}</div>
       <div class="subject">{{message.subject}}</div>
     </a>
   </div>
+</div>
+<div id="message">
+  <div class="message-header">
+    <h1>{{message.subject}}</h1>
+    <span>To: {{message.to | stringify}}</span>
+  </div>
+  <div class="message-content" ng-bind-html="message.html"></div>
 </div>

@@ -137,19 +137,19 @@ footer p {
   overflow-y: scroll;
 }
 
-  #message-list #message {
+  #message-list #message-item {
     border-bottom: 1px solid #ccc;
     padding: 8px;
     width: 100%;
     font-family: sans-serif;
   }
 
-    #message-list #message a {
+    #message-list #message-item a {
       text-decoration: none;
       color: inherit;
     }
 
-    #message-list #message .to {
+    #message-list #message-item .to, .from {
       white-space: nowrap;
       width: 100%;
       overflow: hidden;
@@ -157,13 +157,27 @@ footer p {
       font-weight: 500;
     }
 
-    #message-list #message .subject {
+    #message-list #message-item .subject {
       white-space: nowrap;
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       font-weight: 300;
     }
+
+#message {
+  margin-left: 300px;
+}
+
+  #message .message-header {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  #message .message-content {
+    margin-top: 15px;
+  }
+
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 

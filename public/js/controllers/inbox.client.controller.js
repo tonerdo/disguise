@@ -1,18 +1,18 @@
-app.controller('SentCtrl', ['$scope', '$rootScope', '$stateParams', 'lodash', 'EmailSvc',
+app.controller('InboxCtrl', ['$scope', '$rootScope', '$stateParams', 'lodash', 'EmailSvc',
  function($scope, $rootScope, $stateParams, lodash, EmailSvc){
 
-  $scope.sentMessages = [];
+  $scope.inbox = [];
   $scope.message = {};
 
   var showMessage = function(messages) {
     $scope.messageId = $stateParams.messageId;
-    $scope.message = lodash.where($scope.sentMessages, { 'messageId': $scope.messageId })[0];
+    $scope.message = lodash.where($scope.inbox, { 'messageId': $scope.messageId })[0];
     console.log($scope.message);
   }
 
-  EmailSvc.sent($rootScope.rootUser.user_id)
+  EmailSvc.received($rootScope.rootUser.user_id)
     .success(function(data){
-      $scope.sentMessages = data;
+      $scope.inbox = data;
       if($stateParams.messageId)
         showMessage(data);
     })
