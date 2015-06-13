@@ -6,10 +6,4 @@
     </a>
   </div>
 </div>
-<div id="message">
-  <div class="message-header">
-    <h1>{{message.subject}}</h1>
-    <span>To: {{message.to | stringify}}</span>
-  </div>
-  <div class="message-content" ng-bind-html="message.html"></div>
-</div>
+<div id="message" ui-view></div>

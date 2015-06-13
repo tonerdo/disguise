@@ -23,20 +23,20 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         templateUrl: './views/inbox.client.view.html',
         controller: 'InboxCtrl'
     })
-    .state('mail.inboxmessages', {
-        url:'/inbox/:messageId',
-        templateUrl: './views/inbox.client.view.html',
-        controller: 'InboxCtrl'
+    .state('mail.inbox.messages', {
+        url:'/:messageId',
+        templateUrl: './views/received.client.view.html',
+        controller: 'ReceivedCtrl'
     })
     .state('mail.sent', {
         url: '/sent',
         templateUrl: './views/sent.client.view.html',
         controller: 'SentCtrl'
     })
-    .state('mail.sentmessages', {
-        url: '/sent/:messageId',
-        templateUrl: './views/sent.client.view.html',
-        controller: 'SentCtrl'
+    .state('mail.sent.messages', {
+        url: '/:messageId',
+        templateUrl: './views/outbox.client.view.html',
+        controller: 'OutboxCtrl'
     });
 
 }]);

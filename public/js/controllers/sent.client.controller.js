@@ -1,20 +1,13 @@
-app.controller('SentCtrl', ['$scope', '$rootScope', '$stateParams', 'lodash', 'EmailSvc',
- function($scope, $rootScope, $stateParams, lodash, EmailSvc){
+app.controller('SentCtrl', ['$scope', '$rootScope', '$stateParams', 'EmailSvc',
+ function($scope, $rootScope, $stateParams, EmailSvc){
 
   $scope.sentMessages = [];
-  $scope.message = {};
-
-  var showMessage = function(messages) {
-    $scope.messageId = $stateParams.messageId;
-    $scope.message = lodash.where($scope.sentMessages, { 'messageId': $scope.messageId })[0];
-    console.log($scope.message);
-  }
+  $rootScope.rootOutbox = [];
 
   EmailSvc.sent($rootScope.rootUser.user_id)
     .success(function(data){
       $scope.sentMessages = data;
-      if($stateParams.messageId)
-        showMessage(data);
+      $rootScope.rootOutbox = data;
     })
     .error(function(data){
 
