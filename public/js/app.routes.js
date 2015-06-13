@@ -24,7 +24,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     })
     .state('mail.sent', {
         url: '/sent',
-        templateUrl: './views/sent.client.view.html'
+        templateUrl: './views/sent.client.view.html',
+        controller: 'SentCtrl'
     });
 
 }]);

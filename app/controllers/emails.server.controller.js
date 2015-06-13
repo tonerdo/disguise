@@ -19,6 +19,8 @@ module.exports = {
 
       if (err) {
         return res.status(500).send(err);
+      } else if(!user){
+        return res.status(500).send({ "error": "User not found" });
       } else {
 
         var received = _.map(user.received, function(msg){
@@ -40,6 +42,8 @@ module.exports = {
 
       if (err) {
         return res.status(500).send(err);
+      } else if(!user){
+        return res.status(500).send({ "error": "User not found" });
       } else {
 
         var sent = _.map(user.sent, function(msg){

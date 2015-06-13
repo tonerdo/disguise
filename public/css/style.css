@@ -7,6 +7,11 @@
   width: 300px;
 }
 
+.nopadding {
+  padding: 0;
+  margin: 0;
+}
+
 h2#desc {
   color: #F0E68C;
   font-family: Raleway, sans-serif;
@@ -120,6 +125,45 @@ footer p {
   font-family: Raleway;
   font-weight: bold;
 }
+
+#message-list {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 220px;
+  width: 300px;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+  #message-list #message {
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    font-family: sans-serif;
+  }
+
+    #message-list #message a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #message-list #message .to {
+      white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 500;
+    }
+
+    #message-list #message .subject {
+      white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 300;
+    }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 

@@ -1,1 +1,8 @@
-Sent View
+<div id="message-list">
+  <div id="message" ng-repeat="message in sentMessages">
+    <a href="{{message.messageId}}">
+      <div class="to">{{message.to | stringify}}</div>
+      <div class="subject">{{message.subject}}</div>
+    </a>
+  </div>
+</div>
