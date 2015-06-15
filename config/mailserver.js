@@ -92,8 +92,6 @@ module.exports = function() {
       }
     );
 
-    mailparser = new MailParser();
-
   });
 
   return mail;

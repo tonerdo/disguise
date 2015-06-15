@@ -45,6 +45,33 @@ footer p {
 
 
 /* Mail View Styles */
+
+
+#topbar {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 35px;
+  background-color: #333;
+  color: #fff;
+}
+
+  #topbar > div {
+    position: relative;
+    margin-top: 3px;
+    padding-left: 10px;
+  }
+
+    #topbar > div > a {
+      padding: 5px;
+      float: right;
+      padding-right: 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+
 #sidebar {
   position: fixed;
   top: 0;
@@ -119,6 +146,7 @@ footer p {
     }
 
 #main {
+  position: relative;
   margin-left: 220px;
 }
 
@@ -179,6 +207,40 @@ footer p {
     margin-top: 15px;
   }
 
+/* Sidebar responsiveness */
+@media (max-width: 768px) {
+
+  #sidebar {
+    display: none;
+  }
+
+  #topbar {
+    display: block;
+  }
+
+  #main {
+    margin-left: 0px;
+  }
+
+  #message-list {
+    left: 0px;
+    width: 100%;
+    max-height: 35%;
+    margin-top: 35px;
+    border-bottom: 2px solid #555;
+  }
+
+  #message {
+    position: fixed;
+    margin-top: 35px;
+    top: 35%;
+    bottom: 0;
+    margin-left: 0px;
+    overflow-y: scroll;
+    padding-right: 15px;
+  }
+
+}
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 
