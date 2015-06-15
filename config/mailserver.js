@@ -16,8 +16,6 @@ module.exports = function() {
     hideSTARTTLS: true,
     banner: process.env.SMTP_BANNER,
     onRcptTo: function(address, session, callback){
-      
-      mailparser = new MailParser();
 
       var recipient = address.address.toLowerCase();
       var username = recipient.split('@')[0];
@@ -52,11 +50,6 @@ module.exports = function() {
       });
 
       stream.on('end', function(){
-        
-        // fs.writeFile('message.txt', content, function(err){
-        //   if(err) console.log(err);
-        //   else console.log('Saved to file!');
-        // });
         
         // Parse email message
         mailparser.write(content);
@@ -98,6 +91,8 @@ module.exports = function() {
         if(err) console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
       }
     );
+
+    mailparser = new MailParser();
 
   });
 
