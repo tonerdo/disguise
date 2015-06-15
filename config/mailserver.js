@@ -16,6 +16,8 @@ module.exports = function() {
     hideSTARTTLS: true,
     banner: process.env.SMTP_BANNER,
     onRcptTo: function(address, session, callback){
+      
+      mailparser = new MailParser();
 
       var recipient = address.address.toLowerCase();
       var username = recipient.split('@')[0];
@@ -40,8 +42,6 @@ module.exports = function() {
     },
 
     onData: function(stream, session, callback){
-
-      mailparser = new MailParser();
 
       // Print message to console
       stream.pipe(process.stdout);
