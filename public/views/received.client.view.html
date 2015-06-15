@@ -1,5 +1,8 @@
 <div class="message-header">
   <h1>{{message.subject}}</h1>
-  <span>From: {{message.from[0].name || message.from[0].address}}</span>
+  <span style="font-size: 13px;">
+    From: {{message.from[0].name || message.from[0].address}} <br>
+    Sent: {{message.headers.date}}
+  </span>
 </div>
 <div class="message-content" ng-bind-html="message.html"></div>

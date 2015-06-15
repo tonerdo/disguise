@@ -1,1 +1,2 @@
-var app = angular.module('disguiseApp',['ui.router', 'ngSanitize', 'ngCookies', 'ngTagsInput', 'textAngular', 'ngLodash']);
+var app = angular.module('disguiseApp',
+  ['ui.router', 'ngSanitize', 'ngCookies', 'ngTagsInput', 'textAngular', 'ngLodash', 'angular-momentjs']);

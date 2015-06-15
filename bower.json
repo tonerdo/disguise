@@ -26,6 +26,8 @@
     "angular-cookies": "~1.4.0",
     "ng-tags-input": "~2.3.0",
     "textAngular": "~1.4.1",
-    "ng-lodash": "~0.2.3"
+    "ng-lodash": "~0.2.3",
+    "moment": "~2.10.3",
+    "angular-momentjs": "~0.1.9"
   }
 }
