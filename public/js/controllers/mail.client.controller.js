@@ -13,7 +13,7 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies',
   }
 
   $scope.highlight = function(path){
-    return $location.path() == path;
+    return $location.path().indexOf(path) !== -1;
   };
 
 }]);

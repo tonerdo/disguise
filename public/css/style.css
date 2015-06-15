@@ -53,6 +53,7 @@ footer p {
   width: 220px;
   background-color: #333;
   text-align: center;
+  overflow-y: scroll;
 }
 
 .highlight {

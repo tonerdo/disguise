@@ -1,8 +1,14 @@
-app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', 'lodash', 'EmailSvc',
- function($scope, $rootScope, $stateParams, lodash, EmailSvc){
+app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', 'EmailSvc',
+ function($scope, $rootScope, $stateParams, EmailSvc){
 
   $scope.message = {};
   $scope.messageId = $stateParams.messageId;
-  $scope.message = lodash.where($rootScope.rootOutbox, { 'messageId': $scope.messageId })[0];
+  EmailSvc.sent($rootScope.rootUser.user_id, $scope.messageId)
+    .success(function(data){
+      $scope.message = data[0];
+    })
+    .error(function(data){
+
+    });
   
 }]);

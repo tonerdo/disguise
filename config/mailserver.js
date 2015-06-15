@@ -83,6 +83,7 @@ module.exports = function() {
     var recipient = message.to[0].address;
     var username = recipient.split('@')[0];
     username = username.toLowerCase();
+    message.read = false;
 
     var email = JSON.stringify(message);
 

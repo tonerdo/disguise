@@ -14,6 +14,7 @@ module.exports = {
   received: function(req, res, next) {
 
     var userId = req.params.user_id;
+    var messageId = req.query.id;
 
     User.findOne({"_id": userId}, function(err, user){
 
@@ -26,7 +27,14 @@ module.exports = {
         var received = _.map(user.received, function(msg){
           return JSON.parse(msg);
         });
-        res.json(received);
+
+        if(!messageId) {
+          res.json(received);
+        } else {
+          var recv = _.where(received, { 'messageId': messageId });
+          res.json(recv);
+        }
+
         next();
       }
 
@@ -37,6 +45,7 @@ module.exports = {
   sent: function(req, res, next) {
 
     var userId = req.params.user_id;
+    var messageId = req.query.id;
 
     User.findOne({"_id": userId}, function(err, user){
 
@@ -49,7 +58,14 @@ module.exports = {
         var sent = _.map(user.sent, function(msg){
           return JSON.parse(msg);
         });
-        res.json(sent);
+
+        if(!messageId) {
+          res.json(sent);
+        } else {
+          var snt = _.where(sent, { 'messageId': messageId });
+          res.json(snt);
+        }
+
         next();
       }
 
