@@ -3,6 +3,7 @@ app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', 'EmailSv
 
   $scope.message = {};
   $scope.messageId = $stateParams.messageId;
+  
   EmailSvc.received($rootScope.rootUser.user_id, $scope.messageId)
     .success(function(data){
       $scope.message = data[0];

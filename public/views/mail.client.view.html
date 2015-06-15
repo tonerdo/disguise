@@ -38,6 +38,34 @@
   </button>
 </div>
 
+<div id="mobile-sidebar">
+
+  <img src="img/logo/logo-small.png">
+  <div>
+    <p ng-class="{'highlight': highlight('/mail/compose')}">
+      <a ui-sref="mail.compose">
+        <span class="glyphicon glyphicon-edit"></span>
+      </a>
+    </p>
+    <p ng-class="{'highlight': highlight('/mail/inbox')}">
+      <a ui-sref="mail.inbox">
+        <span class="glyphicon glyphicon-inbox"></span>
+      </a>
+    </p>
+    <p ng-class="{'highlight': highlight('/mail/sent')}">
+      <a ui-sref="mail.sent">
+        <span class="glyphicon glyphicon-send"></span>
+      </a>
+    </p>
+    <p>
+      <a href="">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+    </p>
+  </div>
+
+</div>
+
 <div id="topbar">
   <div>
     <img src="img/logo/logo-small.png">

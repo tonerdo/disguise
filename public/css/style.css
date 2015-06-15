@@ -72,6 +72,32 @@ footer p {
       text-decoration: none;
     }
 
+#mobile-sidebar {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+  #mobile-sidebar > div {
+    margin-top: 35px;
+  }
+
+  #mobile-sidebar a {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  #mobile-sidebar p {
+    margin-top: 25px;
+  }
+
 #sidebar {
   position: fixed;
   top: 0;
@@ -208,9 +234,39 @@ footer p {
   }
 
 /* Sidebar responsiveness */
-@media (max-width: 768px) {
+
+
+@media screen and (max-width: 992px) {
 
   #sidebar {
+    display: none;
+  }
+
+  #topbar {
+    display: none;
+  }
+
+  #mobile-sidebar {
+    display: block;
+  }
+
+  #main {
+    margin-left: 50px;
+  }
+
+  #message-list {
+    left: 50px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  #sidebar {
+    display: none;
+  }
+
+  #mobile-sidebar {
     display: none;
   }
 
@@ -243,8 +299,7 @@ footer p {
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) 
-{   
+@media (min-width: 1200px) {   
 
   .reglog {
     width: 70%;
@@ -264,8 +319,7 @@ footer p {
 }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) 
-{  
+@media (min-width: 992px) {  
 
   .reglog {
     width: 70%;
@@ -285,8 +339,7 @@ footer p {
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) 
-{   
+@media (min-width: 768px) {   
 
   .reglog {
     width: 70%;

@@ -1,12 +1,14 @@
-app.controller('SentCtrl', ['$scope', '$rootScope', '$stateParams', 'EmailSvc',
- function($scope, $rootScope, $stateParams, EmailSvc){
+app.controller('SentCtrl', ['$scope', '$rootScope', '$stateParams', '$location', 'EmailSvc',
+ function($scope, $rootScope, $stateParams, $location, EmailSvc){
 
   $scope.sentMessages = [];
-  $rootScope.rootOutbox = [];
 
   EmailSvc.sent($rootScope.rootUser.user_id)
     .success(function(data){
       $scope.sentMessages = data;
+      if ($scope.sentMessages.length > 0){
+        $location.path('/mail/sent/' + $scope.sentMessages[0].messageId);
+      }
     })
     .error(function(data){
 
