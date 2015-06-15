@@ -11,7 +11,6 @@ app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment',
       $scope.message.date = date;
     })
     .error(function(data){
-
     });
   
 }]);

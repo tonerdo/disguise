@@ -41,6 +41,8 @@ module.exports = function() {
 
     onData: function(stream, session, callback){
 
+      mailparser = new MailParser();
+
       // Print message to console
       stream.pipe(process.stdout);
 

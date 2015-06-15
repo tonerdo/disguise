@@ -1,8 +1,16 @@
 <div class="message-header">
-  <h1>{{message.subject}}</h1>
+  <h2>{{message.subject}}</h2>
   <span style="font-size: 13px;">
     From: {{message.from[0].name || message.from[0].address}} <br>
     Sent: {{message.headers.date}}
+    <span ng-show="message.headers.cc">
+      <br>
+      Cc: {{message.headers.cc | stringify}} 
+    <span>
+    <span ng-show="message.headers.bcc">
+      <br>
+      Bcc: {{message.headers.bcc | stringify}}
+    </span>
   </span>
 </div>
 <div class="message-content" ng-bind-html="message.html"></div>

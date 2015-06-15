@@ -11,7 +11,6 @@ app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', 'EmailSv
       $scope.message.headers.date = date;
     })
     .error(function(data){
-
     });
   
 }]);

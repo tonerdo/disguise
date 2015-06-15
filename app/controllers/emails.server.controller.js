@@ -42,6 +42,32 @@ module.exports = {
 
   },
 
+  unread: function(req, res, next) {
+
+    var userId = req.params.user_id;
+
+    User.findOne({"_id": userId}, function(err, user){
+
+      if (err) {
+        return res.status(500).send(err);
+      } else if(!user){
+        return res.status(500).send({ "error": "User not found" });
+      } else {
+
+        var received = _.map(user.received, function(msg){
+          return JSON.parse(msg);
+        });
+
+        var unread = _.where(received, { 'read': false });
+        res.json({ "unread": unread.length });
+
+        next();
+      }
+
+    });
+
+  },
+
   sent: function(req, res, next) {
 
     var userId = req.params.user_id;

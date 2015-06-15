@@ -6,6 +6,10 @@ app.factory('EmailSvc', ['$http', function($http){
       return $http.post('/api/emails', message);
     },
 
+    unread: function(user_id) {
+      return $http.get('/api/emails/' + user_id + '/unread');
+    },
+
     received: function(user_id, message_id) {
       if(!message_id)
         return $http.get('/api/emails/' + user_id + '/received');
