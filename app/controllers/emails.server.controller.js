@@ -31,6 +31,24 @@ module.exports = {
         if(!messageId) {
           res.json(received);
         } else {
+
+          var idx = _.findIndex(received, function(msg){
+            return msg.messageId == messageId;
+          });
+
+          if (idx > -1) {
+
+            received[idx].read = true;
+            
+            user.received = _.map(received, function(msg){
+              return JSON.stringify(msg);
+            });
+
+            user.save(function(err){
+              if (err) console.log('Error updating read status of message');
+            });
+          }
+
           var recv = _.where(received, { 'messageId': messageId });
           res.json(recv);
         }
