@@ -1,6 +1,5 @@
 var smtp = require('smtp-server').SMTPServer,
-    fs = require('fs'),
-    random = require('random-js')();
+    fs = require('fs');
 
 require('../app/models/user.server.model');
 var mongoose = require('mongoose'),
@@ -61,9 +60,9 @@ module.exports = function() {
           function(err, model) {
 
             if(err) {
-              console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
+              console.log('Received messages save for mailbox ' + recipient + '. Error: ' + err);
             } else {
-              console.log('Message recieved to mailbox: ' + message.to[0].address);
+              console.log('Message saved to mailbox: ' + message.to[0].address);
             }
 
           }
