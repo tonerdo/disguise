@@ -6,38 +6,8 @@ require('../app/models/user.server.model');
 var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
-var MailParser = require("mailparser").MailParser,
-    mailparser = new MailParser();
+var MailParser = require("mailparser").MailParser;
 
-
-// Mail parser event handlers
-mailparser.on('end', function(message){
-
-  var recipient = message.to[0].address;
-  var username = recipient.split('@')[0];
-  username = username.toLowerCase();
-  message.read = false;
-
-  console.log(message);
-  var email = JSON.stringify(message);
-
-  // Insert message details into database
-  User.findOneAndUpdate(
-    username,
-    {$push: {"received": email}},
-    {safe: true, upsert: true},
-    function(err, model) {
-
-      if(model) console.log('Model is set')
-      else console.log('Model is null');
-
-      if(err) console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
-      else console.log('Message recieved to mailbox: ' + message.to[0].address);
-    }
-  );
-
-});
-  
 module.exports = function() {
 
   var mail = new smtp({
@@ -71,6 +41,36 @@ module.exports = function() {
 
     onData: function(stream, session, callback){
 
+      var mailparser = new MailParser();
+
+      // Mail parser event handlers
+      mailparser.on('end', function(message){
+
+        var recipient = message.to[0].address;
+        var username = recipient.split('@')[0];
+        username = username.toLowerCase();
+        message.read = false;
+
+        var email = JSON.stringify(message);
+
+        // Insert message details into database
+        User.findOneAndUpdate(
+          username,
+          {$push: {"received": email}},
+          {safe: true, upsert: true},
+          function(err, model) {
+
+            if(err) {
+              console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
+            } else {
+              console.log('Message recieved to mailbox: ' + message.to[0].address);
+            }
+
+          }
+        );
+
+      });
+
       // Print message to console
       stream.pipe(process.stdout);
 
@@ -80,30 +80,11 @@ module.exports = function() {
       });
 
       stream.on('end', function(){
-
-        // Write to file
-        // var filename = random.uuid4() + '.eml';
-        // fs.writeFile(filename, content, function(err){
-
-        //   if (err) {
-        //    console.log("Error writing to file: " + err)
-        //   } else {
-
-        //     fs.readFile(filename, function(err, data){
-
-        //       if(!err) {
-        //         parse(data);
-        //       }
-
-        //     });
-
-        //   }
-
-        // });
         
         // Parse email message
         mailparser.write(content);
         mailparser.end();
+
         callback(null, 'Message delivered');
 
       });
