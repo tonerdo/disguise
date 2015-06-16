@@ -1,6 +1,7 @@
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
-    function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider',
+    function ($stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider) {
 
+  cfpLoadingBarProvider.includeSpinner = false;
   $urlRouterProvider.otherwise('/');
 
  
