@@ -1,5 +1,6 @@
 var smtp = require('smtp-server').SMTPServer,
-    fs = require('fs');
+    fs = require('fs'),
+    random = require('random-js')();
 
 require('../app/models/user.server.model');
 var mongoose = require('mongoose'),
@@ -50,6 +51,11 @@ module.exports = function() {
       });
 
       stream.on('end', function(){
+
+        // Write to file
+        fs.writeFile(random.uuid4() + '.txt', content, function(err){
+          if (err) console.log("Error writing to file: " + err);
+        });
         
         // Parse email message
         mailparser.write(content);

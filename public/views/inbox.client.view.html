@@ -2,7 +2,9 @@
   <div style="text-align: center; margin-top: 15px;" ng-show="!inbox || inbox.length == 0">
     No messages found
   </div>
-  <div id="message-item" ng-repeat="message in inbox" ng-class="{'unread': !message.read, 'reading': reading(message.messageId)}">
+  <div id="message-item" 
+        ng-repeat="message in inbox" 
+        ng-class="{'unread': !message.read, 'reading': reading(message.messageId)}">
     <a href="/mail/inbox/{{message.messageId}}">
       <div class="from">{{message.from[0].name || message.from[0].address}}</div>
       <div class="subject">{{message.subject}}</div>
