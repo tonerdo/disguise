@@ -9,6 +9,30 @@ var mongoose = require('mongoose'),
 var MailParser = require("mailparser").MailParser,
     mailparser = new MailParser();
 
+
+// Mail parser event handlers
+mailparser.on('end', function(message){
+
+  var recipient = message.to[0].address;
+  var username = recipient.split('@')[0];
+  username = username.toLowerCase();
+  message.read = false;
+
+  var email = JSON.stringify(message);
+
+  // Insert message details into database
+  User.findOneAndUpdate(
+    username,
+    {$push: {"received": email}},
+    {safe: true, upsert: true},
+    function(err, model) {
+      if(err) console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
+      else console.log('Message recieved to mailbox: ' + message.to[0].address);
+    }
+  );
+
+});
+
 module.exports = function() {
 
   var mail = new smtp({
@@ -53,7 +77,8 @@ module.exports = function() {
       stream.on('end', function(){
 
         // Write to file
-        fs.writeFile(random.uuid4() + '.txt', content, function(err){
+        var filename = random.uuid4();
+        fs.writeFile(filename + '.eml', content, function(err){
           if (err) console.log("Error writing to file: " + err);
         });
         
@@ -74,29 +99,6 @@ module.exports = function() {
    */
   mail.on('error', function(err){
     console.log('Mail server error: ' + err.message);
-  });
-
-  // Mail parser event handlers
-  mailparser.on('end', function(message){
-
-    var recipient = message.to[0].address;
-    var username = recipient.split('@')[0];
-    username = username.toLowerCase();
-    message.read = false;
-
-    var email = JSON.stringify(message);
-
-    // Insert message details into database
-    User.findOneAndUpdate(
-      username,
-      {$push: {"received": email}},
-      {safe: true, upsert: true},
-      function(err, model) {
-        if(err) console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
-        else console.log('Message recieved to mailbox: ' + message.to[0].address);
-      }
-    );
-
   });
 
   return mail;
