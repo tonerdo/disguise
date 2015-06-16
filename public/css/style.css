@@ -24,6 +24,15 @@ h2#desc {
   font-size: 12px;
 }
 
+.unread {
+  background-color: #eee;
+}
+
+.reading {
+  background-color: #337ab7; 
+  color: white;
+}
+
 .reglog {
   margin: auto;
   margin-top: 30px;

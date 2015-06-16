@@ -13,4 +13,8 @@ app.controller('InboxCtrl', ['$scope', '$rootScope', '$stateParams', '$location'
     .error(function(data){
     });
 
+  $scope.reading = function(messageId) {
+    return $location.path().indexOf(messageId) !== -1;
+  };
+
 }]);

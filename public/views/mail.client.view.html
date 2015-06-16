@@ -39,8 +39,9 @@
 </div>
 
 <div id="mobile-sidebar">
-
-  <img src="img/logo/logo-small.png">
+  <a ui-sref="home">
+    <img src="img/logo/logo-small.png">
+  </a>
   <div>
     <p ng-class="{'highlight': highlight('/mail/compose')}">
       <a ui-sref="mail.compose">
@@ -68,7 +69,9 @@
 
 <div id="topbar">
   <div>
-    <img src="img/logo/logo-small.png">
+    <a ui-sref="home" style="float: left;">
+      <img src="img/logo/logo-small.png">
+    </a>
     <a href="">
       <span class="glyphicon glyphicon-trash"></span>
     </a>

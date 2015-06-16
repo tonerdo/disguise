@@ -29,6 +29,9 @@ module.exports = function() {
   ));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.get(/^((?!api).)*$/, function(req, res){
+    res.sendFile(process.cwd() + '/public/index.html');
+  });
 
   // Include passport config
   require('./passport')(app, passport, jwt);

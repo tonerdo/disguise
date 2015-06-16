@@ -2,8 +2,8 @@
   <div style="text-align: center; margin-top: 15px;" ng-show="!sentMessages || sentMessages.length == 0">
     No messages found
   </div>
-  <div id="message-item" ng-repeat="message in sentMessages">
-    <a href="#/mail/sent/{{message.messageId}}">
+  <div id="message-item" ng-repeat="message in sentMessages" ng-class="{'reading': reading(message.messageId)}">
+    <a href="/mail/sent/{{message.messageId}}">
       <div class="to">{{message.to | stringify}}</div>
       <div class="subject">{{message.subject}}</div>
     </a>

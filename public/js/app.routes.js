@@ -1,6 +1,8 @@
-app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
+    function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $urlRouterProvider.otherwise('/');
+
  
   $stateProvider
     .state('home', {
@@ -38,5 +40,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         templateUrl: './views/outbox.client.view.html',
         controller: 'OutboxCtrl'
     });
+
+    $locationProvider.html5Mode(true);
 
 }]);
