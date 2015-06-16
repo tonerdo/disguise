@@ -79,8 +79,6 @@ module.exports = function() {
   // Mail parser event handlers
   mailparser.on('end', function(message){
 
-    console.log('Message recieved to mailbox: ' + message.to[0].address);
-
     var recipient = message.to[0].address;
     var username = recipient.split('@')[0];
     username = username.toLowerCase();
@@ -95,6 +93,7 @@ module.exports = function() {
       {safe: true, upsert: true},
       function(err, model) {
         if(err) console.log('Received messages append for mailbox ' + recipient + '. Error: ' + err);
+        else console.log('Message recieved to mailbox: ' + message.to[0].address);
       }
     );
 
