@@ -77,14 +77,15 @@ module.exports = function() {
       stream.on('end', function(){
 
         // Write to file
-        var filename = random.uuid4();
-        fs.writeFile(filename + '.eml', content, function(err){
+        var filename = random.uuid4() + '.eml';
+        fs.writeFile(filename, content, function(err){
           if (err) console.log("Error writing to file: " + err);
+          else fs.createReadStream(filename).pipe(mailparser);
         });
         
         // Parse email message
-        mailparser.write(content);
-        mailparser.end();
+        // mailparser.write(content);
+        // mailparser.end();
         callback(null, 'Message delivered');
       });
       
