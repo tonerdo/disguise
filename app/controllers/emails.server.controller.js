@@ -20,18 +20,11 @@ module.exports = {
       return JSON.parse(msg);
     });
 
-    if(!messageId) {
-      res.json(received);
-    } else {
+    for (var i = 0; i < received.length; i++) {
+      var msg = received[i];
+      if (msg.messageId == messageId) {
 
-      var idx = _.findIndex(received, function(msg){
-        return msg.messageId == messageId;
-      });
-
-      if (idx > -1) {
-
-        received[idx].read = true;
-        
+        received[i].read = true;
         req.user.received = _.map(received, function(msg){
           return JSON.stringify(msg);
         });
@@ -39,11 +32,14 @@ module.exports = {
         req.user.save(function(err){
           if (err) console.log('Error updating read status of message. MessageID: ' + messageId);
         });
-      }
 
-      var recv = _.where(received, { 'messageId': messageId });
-      res.json(recv);
+      }
     }
+
+    if (!messageId)
+      res.json(received);
+    else
+      res.json({ "message": "Marked as read" });
 
     next();
 

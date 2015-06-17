@@ -92,6 +92,7 @@ footer p {
   background-color: #333;
   color: #fff;
   text-align: center;
+  z-index: 1;
 }
 
   #mobile-sidebar > div {
@@ -116,6 +117,7 @@ footer p {
   background-color: #333;
   text-align: center;
   overflow-y: scroll;
+  z-index: 1;
 }
 
 .highlight {
@@ -231,6 +233,7 @@ footer p {
 
 #message {
   margin-left: 300px;
+  z-index: -1;
 }
 
   #message .message-header {

@@ -10,6 +10,17 @@ app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', '$moment
     if ($rootScope.inbox[i].messageId == $scope.messageId)
       $scope.message = $rootScope.inbox[i];
     }
+
+    if ($scope.message.read == false){
+
+      EmailSvc.received($rootScope.rootUser.user_id, $scope.message.messageId, $rootScope.rootUser.access_token)
+        .success(function(data){
+        })
+        .error(function(data){
+        });
+
+    }
+
   };
   
   if ($rootScope.inbox) {
