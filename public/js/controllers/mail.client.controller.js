@@ -16,11 +16,23 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'Em
     return $location.path().indexOf(path) !== -1;
   };
 
-  EmailSvc.unread($rootScope.rootUser.user_id)
-    .success(function(data){
-      $scope.unread = data.unread;
-    })
-    .error(function(data){
-    });
+
+  if ($rootScope.rootUser){
+
+    EmailSvc.unread($rootScope.rootUser.user_id)
+      .success(function(data){
+        $scope.unread = data.unread;
+      })
+      .error(function(data){
+        $rootScope.logout();
+      });
+  }
+
+  $rootScope.logout = function(){
+    $cookies.remove('user');
+    $rootScope.rootUser = null;
+    $location.path('/');
+  };
+
 
 }]);

@@ -3,7 +3,7 @@ app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment',
 
   $scope.message = {};
   $scope.messageId = $stateParams.messageId;
-  EmailSvc.sent($rootScope.rootUser.user_id, $scope.messageId)
+  EmailSvc.sent($rootScope.rootUser.user_id, $scope.messageId, $rootScope.rootUser.access_token)
     .success(function(data){
       $scope.message = data[0];
       var date = $moment($scope.message.date);
@@ -11,6 +11,7 @@ app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment',
       $scope.message.date = date;
     })
     .error(function(data){
+      $rootScope.logout();
     });
   
 }]);

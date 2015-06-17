@@ -16,47 +16,36 @@ module.exports = {
     var userId = req.params.user_id;
     var messageId = req.query.id;
 
-    User.findOne({"_id": userId}, function(err, user){
+    var received = _.map(req.user.received, function(msg){
+      return JSON.parse(msg);
+    });
 
-      if (err) {
-        return res.status(500).send(err);
-      } else if(!user){
-        return res.status(500).send({ "error": "User not found" });
-      } else {
+    if(!messageId) {
+      res.json(received);
+    } else {
 
-        var received = _.map(user.received, function(msg){
-          return JSON.parse(msg);
+      var idx = _.findIndex(received, function(msg){
+        return msg.messageId == messageId;
+      });
+
+      if (idx > -1) {
+
+        received[idx].read = true;
+        
+        req.user.received = _.map(received, function(msg){
+          return JSON.stringify(msg);
         });
 
-        if(!messageId) {
-          res.json(received);
-        } else {
-
-          var idx = _.findIndex(received, function(msg){
-            return msg.messageId == messageId;
-          });
-
-          if (idx > -1) {
-
-            received[idx].read = true;
-            
-            user.received = _.map(received, function(msg){
-              return JSON.stringify(msg);
-            });
-
-            user.save(function(err){
-              if (err) console.log('Error updating read status of message');
-            });
-          }
-
-          var recv = _.where(received, { 'messageId': messageId });
-          res.json(recv);
-        }
-
-        next();
+        req.user.save(function(err){
+          if (err) console.log('Error updating read status of message. MessageID: ' + messageId);
+        });
       }
 
-    });
+      var recv = _.where(received, { 'messageId': messageId });
+      res.json(recv);
+    }
+
+    next();
 
   },
 
@@ -91,29 +80,18 @@ module.exports = {
     var userId = req.params.user_id;
     var messageId = req.query.id;
 
-    User.findOne({"_id": userId}, function(err, user){
-
-      if (err) {
-        return res.status(500).send(err);
-      } else if(!user){
-        return res.status(500).send({ "error": "User not found" });
-      } else {
-
-        var sent = _.map(user.sent, function(msg){
-          return JSON.parse(msg);
-        });
-
-        if(!messageId) {
-          res.json(sent);
-        } else {
-          var snt = _.where(sent, { 'messageId': messageId });
-          res.json(snt);
-        }
-
-        next();
-      }
-
+    var sent = _.map(req.user.sent, function(msg){
+      return JSON.parse(msg);
     });
+
+    if(!messageId) {
+      res.json(sent);
+    } else {
+      var snt = _.where(sent, { 'messageId': messageId });
+      res.json(snt);
+    }
+
+    next();
 
   },
 

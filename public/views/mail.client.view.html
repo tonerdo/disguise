@@ -2,13 +2,14 @@
   <a ui-sref="home">
     <img src="img/logo/logo.png">
   </a>
-  <a href="">
-    <p class="account">
-      <span class="glyphicon glyphicon-user"></span>&nbsp;
-      {{rootUser.username}}
-      <span class="glyphicon glyphicon-cog" style="float: right; margin-right: 15px; font-size: 16px;"></span>
-    </p>
-  </a>
+  <p class="account">
+    <span class="glyphicon glyphicon-user"></span>&nbsp;
+    {{rootUser.username}}
+    <a href="" ng-click="logout()"
+               class="glyphicon glyphicon-log-out" 
+               title="Log out" 
+               style="float: right; margin-right: 15px; font-size: 15px; color: #fff; text-decoration: none;"></a>
+  </p>
   <p class="divider"></p>
   <div id="sidebar-menu">
     <a ui-sref="mail.compose">

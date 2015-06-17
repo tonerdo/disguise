@@ -24,24 +24,34 @@ module.exports = function(req, res, next) {
       var token = jwt.decode(accessToken, config.jwt.secret);
 
       if (token.exp <= Date.now()) {
-        res.status(400).send({ "error:": "Access token has expired"});
+        res.status(401).send({ "error:": "Access token has expired"});
       }
 
       if (token.iss !== userId) {
-        res.status(400).send({ "error:": "Invalid access token"});
+        res.status(401).send({ "error:": "Invalid access token"});
       }
 
       User.findOne({ _id: token.iss }, function(err, user) {
+
         if(err) {
+
           res.status(500).send(err);
+
+        } else if(!user){
+
+          res.status(401).send({ "message": "User not found" });
+
         } else {
+
           req.user = user;
           next();
+
         }
+        
       });
 
     } catch(err) {
-      res.status(400).send({ "error:": "Invalid access token"});
+      res.status(401).send({ "error:": "Invalid access token"});
     }
     
   }

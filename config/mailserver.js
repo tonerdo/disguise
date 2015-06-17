@@ -1,5 +1,4 @@
-var smtp = require('smtp-server').SMTPServer,
-    fs = require('fs');
+var smtp = require('smtp-server').SMTPServer;
 
 require('../app/models/user.server.model');
 var mongoose = require('mongoose'),

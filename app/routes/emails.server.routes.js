@@ -1,4 +1,5 @@
 var email = require('../controllers/emails.server.controller.js');
+var jwtauth = require('../../config/jwtauth.js');
 
 module.exports = function(app) {
 
@@ -6,12 +7,12 @@ module.exports = function(app) {
         .post(email.send);
 
   app.route('/api/emails/:user_id/received')
-        .get(email.received);
+        .get(jwtauth, email.received);
 
   app.route('/api/emails/:user_id/unread')
         .get(email.unread);
 
   app.route('/api/emails/:user_id/sent')
-        .get(email.sent);
+        .get(jwtauth, email.sent);
         
 }

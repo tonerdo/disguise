@@ -3,7 +3,7 @@ app.controller('InboxCtrl', ['$scope', '$rootScope', '$stateParams', '$location'
 
   $scope.messages = [];
 
-  EmailSvc.received($rootScope.rootUser.user_id)
+  EmailSvc.received($rootScope.rootUser.user_id, null, $rootScope.rootUser.access_token)
     .success(function(data){
       $scope.messages = data;
       $scope.messages.reverse();
@@ -12,6 +12,7 @@ app.controller('InboxCtrl', ['$scope', '$rootScope', '$stateParams', '$location'
       }
     })
     .error(function(data){
+      $rootScope.logout();
     });
 
   $scope.reading = function(messageId) {

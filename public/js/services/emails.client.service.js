@@ -10,18 +10,18 @@ app.factory('EmailSvc', ['$http', function($http){
       return $http.get('/api/emails/' + user_id + '/unread');
     },
 
-    received: function(user_id, message_id) {
+    received: function(user_id, message_id, access_token) {
       if(!message_id)
-        return $http.get('/api/emails/' + user_id + '/received');
+        return $http.get('/api/emails/' + user_id + '/received?access_token=' + access_token);
       else
-        return $http.get('/api/emails/' + user_id + '/received?id=' + message_id);
+        return $http.get('/api/emails/' + user_id + '/received?id=' + message_id + '&access_token=' + access_token);
     },
 
-    sent: function(user_id, message_id) {
+    sent: function(user_id, message_id, access_token) {
       if(!message_id)
-        return $http.get('/api/emails/' + user_id + '/sent');
+        return $http.get('/api/emails/' + user_id + '/sent?access_token=' + access_token);
       else
-        return $http.get('/api/emails/' + user_id + '/sent?id=' + message_id);
+        return $http.get('/api/emails/' + user_id + '/sent?id=' + message_id + '&access_token=' + access_token);
     }
 
   };
