@@ -3,10 +3,11 @@ app.controller('SentCtrl', ['$scope', '$rootScope', '$stateParams', '$location',
 
   $scope.messages = [];
 
-  EmailSvc.sent($rootScope.rootUser.user_id, null, $rootScope.rootUser.access_token)
+  EmailSvc.sent($rootScope.rootUser.user_id, $rootScope.rootUser.access_token)
     .success(function(data){
       $scope.messages = data;
       $scope.messages.reverse();
+      $rootScope.outbox = $scope.messages;
       if ($scope.messages.length > 0){
         $location.path('/mail/sent/' + $scope.messages[0].messageId);
       }

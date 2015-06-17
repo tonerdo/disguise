@@ -84,12 +84,7 @@ module.exports = {
       return JSON.parse(msg);
     });
 
-    if(!messageId) {
-      res.json(sent);
-    } else {
-      var snt = _.where(sent, { 'messageId': messageId });
-      res.json(snt);
-    }
+    res.json(sent);
 
     next();
 

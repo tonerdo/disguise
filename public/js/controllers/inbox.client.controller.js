@@ -7,6 +7,7 @@ app.controller('InboxCtrl', ['$scope', '$rootScope', '$stateParams', '$location'
     .success(function(data){
       $scope.messages = data;
       $scope.messages.reverse();
+      $rootScope.inbox = $scope.messages;
       if ($scope.messages.length > 0){
         $location.path('/mail/inbox/' + $scope.messages[0].messageId);
       }

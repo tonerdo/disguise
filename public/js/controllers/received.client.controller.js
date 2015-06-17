@@ -3,16 +3,32 @@ app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', '$moment
 
   $scope.message = {};
   $scope.messageId = $stateParams.messageId;
+
+  var loadMessage = function(){
+
+    for (var i = 0; i < $rootScope.inbox.length; i++) {
+    if ($rootScope.inbox[i].messageId == $scope.messageId)
+      $scope.message = $rootScope.inbox[i];
+    }
+  };
   
-  EmailSvc.received($rootScope.rootUser.user_id, $scope.messageId, $rootScope.rootUser.access_token)
-    .success(function(data){
-      $scope.message = data[0];
-      var date = $moment($scope.message.headers.date);
-      date = date.toString();
-      $scope.message.headers.date = date;
-    })
-    .error(function(data){
-      $rootScope.logout();
-    });
+  if ($rootScope.inbox) {
+    loadMessage();
+  } else {
+
+    EmailSvc.received($rootScope.rootUser.user_id, null, $rootScope.rootUser.access_token)
+      .success(function(data){
+        var messages = data;
+        messages.reverse();
+        $rootScope.inbox = messages;
+        loadMessage();
+
+      })
+      .error(function(data){
+        $rootScope.logout();
+      });
+
+  }
+  
   
 }]);
