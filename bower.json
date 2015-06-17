@@ -29,6 +29,7 @@
     "ng-lodash": "~0.2.3",
     "moment": "~2.10.3",
     "angular-momentjs": "~0.1.9",
-    "angular-loading-bar": "~0.7.1"
+    "angular-loading-bar": "~0.7.1",
+    "sweetalert": "~1.0.1"
   }
 }

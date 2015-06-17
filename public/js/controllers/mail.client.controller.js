@@ -1,5 +1,5 @@
-app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'EmailSvc',
- function($rootScope, $scope, $location, $cookies, EmailSvc){
+app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'EmailSvc', 'UserSvc',
+ function($rootScope, $scope, $location, $cookies, EmailSvc, UserSvc){
   
   var cookie = $cookies.get('user');
   if (!cookie) {
@@ -32,6 +32,29 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'Em
     $cookies.remove('user');
     $rootScope.rootUser = null;
     $location.path('/');
+  };
+
+  $scope.dispose = function() {
+    swal({  
+      title: "Are you sure?",   
+      text: "This account and all it's contents will be permanently deleted",   
+      type: "warning",   
+      showCancelButton: true,   
+      confirmButtonColor: "#DD6B55",   
+      confirmButtonText: "Yes, dispose it!",   
+      closeOnConfirm: false 
+    }, 
+    function(){   
+      UserSvc.dispose($rootScope.rootUser.user_id, $rootScope.rootUser.access_token)
+        .success(function(data){
+          swal("Deleted!", "Your account has been disposed.", "success");
+          $location.path('/');
+        })
+        .error(function(){
+          swal("Deleted!", "Your account has been disposed.", "success");
+          $location.path('/');
+        });
+    });
   };
 
 
