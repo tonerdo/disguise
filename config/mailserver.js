@@ -51,21 +51,22 @@ module.exports = function() {
 
         var email = JSON.stringify(message);
 
-        // Insert message details into database
-        User.findOneAndUpdate(
-          username,
-          {$push: {"received": email}},
-          {safe: true, upsert: true},
-          function(err, model) {
 
-            if(err) {
-              console.log('Received messages save for mailbox ' + recipient + '. Error: ' + err);
-            } else {
-              console.log('Message saved to mailbox: ' + message.to[0].address);
-            }
+        // Insert message
+        User.findOne({"username": username}, function(err, user){
 
+          if (err){
+            console.log('Error getting user: ' + username + ' Error: ' + err);
+          } else if (!user){
+            console.log('User not found');
+          } else {
+            user.received.push(email);
+            user.save(function(err){
+              console.log('Error saving message for user: ' + username + ' Error: ' + err);
+            });
           }
-        );
+
+        });
 
       });
 
