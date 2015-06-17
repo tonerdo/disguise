@@ -1,13 +1,14 @@
 app.controller('InboxCtrl', ['$scope', '$rootScope', '$stateParams', '$location', 'EmailSvc',
  function($scope, $rootScope, $stateParams, $location, EmailSvc){
 
-  $scope.inbox = [];
+  $scope.messages = [];
 
   EmailSvc.received($rootScope.rootUser.user_id)
     .success(function(data){
-      $scope.inbox = data;
-      if ($scope.inbox.length > 0){
-        $location.path('/mail/inbox/' + $scope.inbox[0].messageId);
+      $scope.messages = data;
+      $scope.messages.reverse();
+      if ($scope.messages.length > 0){
+        $location.path('/mail/inbox/' + $scope.messages[0].messageId);
       }
     })
     .error(function(data){
