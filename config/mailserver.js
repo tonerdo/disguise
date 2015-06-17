@@ -62,7 +62,10 @@ module.exports = function() {
           } else {
             user.received.push(email);
             user.save(function(err){
-              console.log('Error saving message for user: ' + username + ' Error: ' + err);
+              if (err)
+                console.log('Error saving message for user: ' + username + ' Error: ' + err);
+              else
+                console.log('Message saved successfully to mailbox: ' + recipient);
             });
           }
 
