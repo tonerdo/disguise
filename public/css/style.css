@@ -140,6 +140,10 @@ footer p {
   padding-bottom: 10px;
 }
 
+  .account a {
+    font-size: 12px;
+  }
+
   .account:hover {
     color: #ccc;
     background-color: #222;

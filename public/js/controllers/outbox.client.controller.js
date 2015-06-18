@@ -23,8 +23,9 @@ app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment',
         $rootScope.outbox = $scope.messages;
         loadMessage();
       })
-      .error(function(data){
-        $rootScope.logout();
+      .error(function(data, status){
+        if (status == 401)
+          $rootScope.logout();
       });
 
   }

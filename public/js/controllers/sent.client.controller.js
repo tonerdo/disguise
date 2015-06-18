@@ -12,8 +12,9 @@ app.controller('SentCtrl', ['$scope', '$rootScope', '$stateParams', '$location',
         $location.path('/mail/sent/' + $scope.messages[0].messageId);
       }
     })
-    .error(function(data){
-      $rootScope.logout();
+    .error(function(data, status){
+      if (status == 401)
+        $rootScope.logout();
     });
 
   $scope.reading = function(messageId) {

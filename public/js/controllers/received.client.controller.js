@@ -35,8 +35,9 @@ app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', '$moment
         loadMessage();
 
       })
-      .error(function(data){
-        $rootScope.logout();
+      .error(function(data, status){
+        if (status == 401)
+          $rootScope.logout();
       });
 
   }

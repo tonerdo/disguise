@@ -16,16 +16,20 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'Em
     return $location.path().indexOf(path) !== -1;
   };
 
-
-  if ($rootScope.rootUser){
+  $scope.getUnread = function(){
 
     EmailSvc.unread($rootScope.rootUser.user_id)
       .success(function(data){
         $scope.unread = data.unread;
       })
       .error(function(data){
-        $rootScope.logout();
       });
+
+  };
+
+
+  if ($rootScope.rootUser){
+    $scope.getUnread();
   }
 
   $rootScope.logout = function(){
