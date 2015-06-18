@@ -11,11 +11,7 @@
                style="float: right; margin-right: 15px; font-size: 15px; color: #fff; text-decoration: none;"></a>
   </p>
   <p class="divider"></p>
-  <p>
-    <a style="float: right; margin-right: 15px; color: #fff; text-decoration: none; font-size: 12px;" 
-        href="" class="glyphicon glyphicon-refresh" ng-click="getUnread()">
-    </a>
-  </p>
+
   <div id="sidebar-menu">
     <a ui-sref="mail.compose" ui-sref-opts="{reload: true}">
       <p ng-class="{'highlight': highlight('/mail/compose')}">
@@ -28,6 +24,9 @@
         <span class="glyphicon glyphicon-inbox"></span>&nbsp;
         <span>Inbox</span>
         <span class="label label-primary" ng-show="unread || unread > 0">{{unread}}</span>
+        <a style="float: right; margin-right: 15px; color: #fff; text-decoration: none; font-size: 12px;" 
+            href="" class="glyphicon glyphicon-refresh" ng-click="getUnread()">
+        </a>
       </p>
     </a>
     <a ui-sref="mail.sent" ui-sref-opts="{reload: true}">
