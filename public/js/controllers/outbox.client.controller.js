@@ -9,6 +9,8 @@ app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment',
     for (var i = 0; i < $rootScope.outbox.length; i++) {
     if ($rootScope.outbox[i].messageId == $scope.messageId)
       $scope.message = $rootScope.outbox[i];
+      $scope.message.date = $moment($scope.message.date);
+      $scope.message.date = $scope.message.date.toString();
     }
   };
 

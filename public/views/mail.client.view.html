@@ -17,20 +17,20 @@
     </a>
   </p>
   <div id="sidebar-menu">
-    <a ui-sref="mail.compose">
+    <a ui-sref="mail.compose" ui-sref-opts="{reload: true}">
       <p ng-class="{'highlight': highlight('/mail/compose')}">
         <span class="glyphicon glyphicon-edit"></span>&nbsp;
         <span>Compose</span>
       </p>
     </a>
-    <a ui-sref="mail.inbox">
+    <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
       <p ng-class="{'highlight': highlight('/mail/inbox')}">
         <span class="glyphicon glyphicon-inbox"></span>&nbsp;
         <span>Inbox</span>
         <span class="label label-primary" ng-show="unread || unread > 0">{{unread}}</span>
       </p>
     </a>
-    <a ui-sref="mail.sent">
+    <a ui-sref="mail.sent" ui-sref-opts="{reload: true}">
       <p ng-class="{'highlight': highlight('/mail/sent')}">
         <span class="glyphicon glyphicon-send"></span>&nbsp;
         <span>Sent</span>
@@ -50,17 +50,17 @@
   </a>
   <div>
     <p ng-class="{'highlight': highlight('/mail/compose')}">
-      <a ui-sref="mail.compose">
+      <a ui-sref="mail.compose" ui-sref-opts="{reload: true}">
         <span class="glyphicon glyphicon-edit"></span>
       </a>
     </p>
     <p ng-class="{'highlight': highlight('/mail/inbox')}">
-      <a ui-sref="mail.inbox">
+      <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
         <span class="glyphicon glyphicon-inbox"></span>
       </a>
     </p>
     <p ng-class="{'highlight': highlight('/mail/sent')}">
-      <a ui-sref="mail.sent">
+      <a ui-sref="mail.sent" ui-sref-opts="{reload: true}">
         <span class="glyphicon glyphicon-send"></span>
       </a>
     </p>
@@ -81,13 +81,13 @@
     <a href="" ng-click="dispose()">
       <span class="glyphicon glyphicon-trash"></span>
     </a>
-    <a ui-sref="mail.sent">
+    <a ui-sref="mail.sent" ui-sref-opts="{reload: true}">
       <span class="glyphicon glyphicon-send"></span>
     </a>
-    <a ui-sref="mail.inbox">
+    <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
       <span class="glyphicon glyphicon-inbox"></span>
     </a>
-    <a ui-sref="mail.compose">
+    <a ui-sref="mail.compose" ui-sref-opts="{reload: true}">
       <span class="glyphicon glyphicon-edit"></span>
     </a>
   </div>

@@ -86,6 +86,51 @@ module.exports = {
 
   },
 
+  delete: function(req, res, next) {
+
+    var channel = req.query.channel;
+    var messageId = req.query.id;
+
+    if (!channel || !messageId){
+      res.status(400).send({ "error": "No mode specified" });
+    }
+
+    var msgs = (channel == 'sent') ? req.user.sent : req.user.received;
+    var messages = _.map(msgs, function(msg){
+      return JSON.parse(msg);
+    });
+
+    for (var i = 0; i < messages.length; i++) {
+
+      if(messages[i].messageId == messageId){
+
+        messages.splice(i, 1);
+        if (channel == 'sent') {
+
+          req.user.sent = _.map(messages, function(msg){
+            return JSON.stringify(msg);
+          });
+
+        } else {
+
+          req.user.received = _.map(messages, function(msg){
+            return JSON.stringify(msg);
+          });
+
+        }
+
+        req.user.save(function(err){
+          if(err) console.log('Error saving message delete to database');
+        });
+
+      }
+
+    }
+
+    res.json({ "message": "Delete successful" });
+
+  },
+
 
   /**
    * Send an email

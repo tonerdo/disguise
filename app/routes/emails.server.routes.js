@@ -6,6 +6,9 @@ module.exports = function(app) {
   app.route('/api/emails')
         .post(email.send);
 
+  app.route('/api/emails/:user_id')
+        .delete(jwtauth, email.delete);
+
   app.route('/api/emails/:user_id/received')
         .get(jwtauth, email.received);
 

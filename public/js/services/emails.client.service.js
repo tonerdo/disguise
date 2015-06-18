@@ -19,6 +19,10 @@ app.factory('EmailSvc', ['$http', function($http){
 
     sent: function(user_id, access_token) {
       return $http.get('/api/emails/' + user_id + '/sent?access_token=' + access_token);
+    },
+
+    delete: function(user_id, message_id, channel, access_token) {
+      return $http.delete('/api/emails/' + user_id + '?id=' + message_id + '&channel=' + channel + '&access_token=' + access_token);
     }
 
   };

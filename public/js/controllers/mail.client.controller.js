@@ -1,5 +1,5 @@
-app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'EmailSvc', 'UserSvc',
- function($rootScope, $scope, $location, $cookies, EmailSvc, UserSvc){
+app.controller('MailCtrl', ['$rootScope', '$scope', '$state', '$location', '$cookies', 'EmailSvc', 'UserSvc',
+ function($rootScope, $scope, $state, $location, $cookies, EmailSvc, UserSvc){
   
   var cookie = $cookies.get('user');
   if (!cookie) {
@@ -9,7 +9,7 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'Em
   }
 
   if ($location.path() == '/mail') {
-    $location.path('/mail/inbox');
+    $state.go('mail.inbox', {}, {reload: true});
   }
 
   $scope.highlight = function(path){
@@ -35,7 +35,7 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'Em
   $rootScope.logout = function(){
     $cookies.remove('user');
     $rootScope.rootUser = null;
-    $location.path('/');
+    $state.go('home', {}, {reload: true});
   };
 
   $scope.dispose = function() {

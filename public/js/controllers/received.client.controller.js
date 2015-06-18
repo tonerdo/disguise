@@ -1,5 +1,5 @@
-app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', '$moment', 'EmailSvc',
- function($scope, $rootScope, $stateParams, $moment, EmailSvc){
+app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$moment', '$location', 'EmailSvc',
+ function($scope, $rootScope, $state, $stateParams, $moment, $location, EmailSvc){
 
   $scope.message = {};
   $scope.messageId = $stateParams.messageId;
@@ -24,7 +24,9 @@ app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', '$moment
   };
   
   if ($rootScope.inbox) {
+
     loadMessage();
+    
   } else {
 
     EmailSvc.received($rootScope.rootUser.user_id, null, $rootScope.rootUser.access_token)
@@ -41,6 +43,18 @@ app.controller('ReceivedCtrl', ['$scope', '$rootScope', '$stateParams', '$moment
       });
 
   }
+
+  $scope.delete = function(){
+
+    EmailSvc.delete($rootScope.rootUser.user_id, $scope.messageId, 'received', $rootScope.rootUser.access_token)
+      .success(function(){
+        $state.go('mail.inbox', {}, {reload: true});
+      })
+      .error(function(){
+        $state.go('mail.inbox', {}, {reload: true});
+      });
+
+  };
   
   
 }]);
