@@ -16,8 +16,19 @@ h2#desc {
   color: #F0E68C;
   font-family: Raleway, sans-serif;
   line-height: 1.4em;
-  margin-top: 35px;
+  margin-top: 65px;
 }
+
+p.action-text {
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: center;
+  color: #ccc;
+}
+
+  p.action-text a {
+    color: #ccc;
+  }
 
 .required {
   color: #F0E68C;
@@ -253,10 +264,22 @@ footer p {
   margin-top: 5px;
 }
 
+.reglog {
+  width: 70%;
+}
+
+p.gutter {
+  margin-top: 75px;
+}
+
 /* Sidebar responsiveness */
 
 
 @media screen and (max-width: 992px) {
+
+  .reglog {
+    width: 80%;
+  }
 
   #sidebar {
     display: none;
@@ -281,6 +304,10 @@ footer p {
 }
 
 @media screen and (max-width: 768px) {
+
+  .reglog {
+    width: 90%;
+  }
 
   #sidebar {
     display: none;
@@ -316,60 +343,4 @@ footer p {
     padding-right: 15px;
   }
 
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {   
-
-  .reglog {
-    width: 70%;
-  }
-
-    .reglog .left-button {
-      padding-right: 1px;
-    }
-
-    .reglog .right-button {
-      padding-left: 1px;
-    }
-
-  p.gutter {
-    margin-top: 75px;
-  }
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {  
-
-  .reglog {
-    width: 70%;
-  }
-
-    .reglog .left-button {
-      padding-right: 1px;
-    }
-
-    .reglog .right-button {
-      padding-left: 1px;
-    }
-
-  p.gutter {
-    margin-top: 75px;
-  }
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {   
-
-  .reglog {
-    width: 70%;
-  }
-
-    .reglog .left-button {
-      padding-right: 1px;
-    }
-
-    .reglog .right-button {
-      padding-left: 1px;
-    }
 }

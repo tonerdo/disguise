@@ -3,6 +3,11 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc',
   
   $scope.user = {};
 
+  $scope.loginMode = true;
+  $scope.reglog = function(){
+    $scope.loginMode = !$scope.loginMode;
+  };
+
   $scope.alerts = {
     success: {
       text: '',
@@ -135,6 +140,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc',
         if(status == 200){
           console.log(data);
           showSuccess('Registration successful. Log In.');
+          $scope.loginMode = true;
         }
       })
       .error(function(data, status, headers){
