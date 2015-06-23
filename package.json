@@ -32,7 +32,6 @@
     "express": "^4.12.4",
     "express-session": "^1.11.2",
     "jwt-simple": "^0.3.0",
-    "later": "^1.1.6",
     "lodash": "^3.9.3",
     "mailparser": "^0.5.1",
     "moment": "^2.10.3",
