@@ -85,14 +85,14 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc',
       validated = false;
     }
 
-    if(!$scope.user.password || $scope.user.password == '') {
+    if(!$scope.password || $scope.password == '') {
 
       $scope.validations.password.text = 'Password is required';
       $scope.validations.password.show = true;
       validated = false;
     }
 
-    if ($scope.user.password.length < 8) {
+    if ($scope.password.length < 8) {
 
       $scope.validations.password.text = 'Password cannot be less than eight characters';
       $scope.validations.password.show = true;
@@ -109,6 +109,13 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc',
     clearValidationErrors();
 
     if(!validate()) { return; }
+
+    $scope.user.password = angular.copy($scope.password);
+    
+    var shaObj = new jsSHA("SHA-512", "TEXT");
+    shaObj.update($scope.user.password);
+    var hash = shaObj.getHash("HEX");
+    $scope.user.password = hash;
 
     UserSvc.login($scope.user)
       .success(function(data, status){
@@ -134,6 +141,13 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc',
     clearValidationErrors();
 
     if(!validate()) { return; }
+
+    $scope.user.password = angular.copy($scope.password);
+
+    var shaObj = new jsSHA("SHA-512", "TEXT");
+    shaObj.update($scope.user.password);
+    var hash = shaObj.getHash("HEX");
+    $scope.user.password = hash;
 
     UserSvc.register($scope.user)
       .success(function(data, status){

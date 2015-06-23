@@ -3,8 +3,26 @@
   src: url('../fonts/raleway/raleway_thin-webfont.woff');
 }
 
-.logo {
+img.logo {
   width: 300px;
+}
+
+p.logo {
+  text-align: center;
+  color: #F0E68C;
+  font-size: 4em;
+  font-family: Raleway;
+}
+
+  p.logo span {
+    margin-left: -10px;
+  }
+
+i.logo {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  color: #F0E68C;
+  font-size: 75px;
 }
 
 .nopadding {
@@ -62,6 +80,19 @@ footer p {
   color: #F0E68C;
   font-family: Raleway, sans-serif;
 }
+
+  footer p a {
+    color: #F0E68C;
+    font-family: sans-serif;
+  }
+
+  footer p a:hover {
+    color: #F0E68C;
+  }
+
+  footer p a:visited {
+    color: #F0E68C;
+  }
 
 
 /* Mail View Styles */
@@ -301,6 +332,13 @@ p.gutter {
     left: 50px;
   }
 
+  i.logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #F0E68C;
+    font-size: 40px;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -341,6 +379,12 @@ p.gutter {
     margin-left: 0px;
     overflow-y: scroll;
     padding-right: 15px;
+  }
+
+  i.logo {
+    color: #F0E68C;
+    font-size: 22px;
+    margin-top: 0px;
   }
 
 }
