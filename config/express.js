@@ -24,7 +24,9 @@ setInterval(function(){
         
         if (diff >= 3) {
           var user = new User(users[i]);
-          user.remove(function(err){ });
+          user.remove(function(err){ 
+            console.log(user.username + ' automatically disposed');
+          });
         }
 
       }
