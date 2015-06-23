@@ -3,9 +3,37 @@ var express = require('express'),
     session = require('express-session'),
     passport = require('passport'),
     jwt = require('jwt-simple'),
+    mongoose = require('mongoose'),
+    moment = require('moment'),
     morgan = require('morgan');
 
-var User = require('../app/models/user.server.model');
+require('../app/models/user.server.model');
+var User = mongoose.model('User');
+
+setInterval(function(){
+
+  User.find(function(err, users){
+
+    if (users) {
+     
+      for (var i = 0; i < users.length; i++) {
+
+        var now = moment(Date.now());
+        var created = moment(users[i].created);
+        var diff = now.diff(created, 'days');
+        
+        if (diff >= 3) {
+          var user = new User(users[i]);
+          user.remove(function(err){ });
+        }
+
+      }
+
+    }
+
+  });
+
+}, 3600000);
 
 module.exports = function() {
 
