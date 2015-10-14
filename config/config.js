@@ -1,7 +1,7 @@
 module.exports = function() {
 
   var server = {
-    "port": process.env.PORT || 8080
+    "port": process.env.PORT
   };
 
   var mail = {
@@ -9,7 +9,7 @@ module.exports = function() {
   };
 
   var db = {
-    "uri": process.env.MONGODB_DEV || process.env.MONGODB_PROD
+    "uri": process.env.MONGODB
   };
 
   var jwt = {

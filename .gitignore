@@ -1,5 +1,4 @@
 node_modules/
 public/lib/
 .log
-.env
-.DS_Store
+.DS_Store/

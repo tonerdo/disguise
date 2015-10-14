@@ -12,7 +12,7 @@ module.exports = function() {
 
     disabledCommands: ['STARTTLS', 'AUTH'],
     hideSTARTTLS: true,
-    banner: process.env.SMTP_BANNER,
+    banner: require("os").hostname(),
     onRcptTo: function(address, session, callback){
 
       var recipient = address.address.toLowerCase();
