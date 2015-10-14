@@ -9,10 +9,10 @@ RUN apt-get install -y mongodb
 COPY . /app
 WORKDIR /app
 
-RUN npm install -g bower
-RUN npm install
-RUN bower install
-RUN npm install forever -g
+RUN sudo npm install -g bower
+RUN sudo npm install
+RUN sudo bower install
+RUN sudo npm install forever -g
 
 RUN mongod
 
