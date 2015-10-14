@@ -3,7 +3,7 @@ FROM ubuntu:15.04
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y nodejs
-RUN apt-get install -y mongodb-org
+RUN apt-get install -y mongodb
 
 COPY . /app
 WORKDIR /app
