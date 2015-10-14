@@ -1,10 +1,11 @@
 FROM ubuntu:15.04
 
 RUN apt-get update
-RUN apt-get install -y git
-RUN apt-get install -y nodejs
-RUN apt-get install -y npm
-RUN apt-get install -y mongodb
+RUN apt-get install -y sudo
+RUN sudo apt-get install -y git
+RUN sudo apt-get install -y nodejs
+RUN sudo apt-get install -y npm
+RUN sudo apt-get install -y mongodb
 
 COPY . /app
 WORKDIR /app
@@ -13,6 +14,8 @@ RUN sudo npm install -g bower
 RUN sudo npm install
 RUN sudo bower install
 RUN sudo npm install forever -g
+
+RUN sudo mkdir -p /data/db
 
 RUN mongod
 
