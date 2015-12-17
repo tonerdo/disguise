@@ -30,7 +30,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoa
       })
       .state('mail.inbox.messages', {
         url: '/:messageId',
-        templateUrl: './views/received.client.view.html',
+        templateUrl: './views/receivedmessage.client.view.html',
         controller: 'ReceivedCtrl'
       })
       .state('mail.sent', {
@@ -40,7 +40,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoa
       })
       .state('mail.sent.messages', {
         url: '/:messageId',
-        templateUrl: './views/outbox.client.view.html',
+        templateUrl: './views/sentmessage.client.view.html',
         controller: 'OutboxCtrl'
       });
 

@@ -59,30 +59,15 @@ p.desc {
     letter-spacing: 5px;
   }
 
-img.logo {
-  width: 300px;
-}
-
 p#reg {
   color: #FFFFFF;
   text-align: center;
 }
 
-p.logo {
-  text-align: center;
-  color: #F0E68C;
-  font-size: 4em;
-  font-family: Raleway Thin;
-}
-
-  p.logo span {
-    margin-left: -10px;
-  }
-
 i.logo {
   margin-top: 35px;
   margin-bottom: 35px;
-  color: #F0E68C;
+  color: #DAA520;
   font-size: 75px;
 }
 
@@ -123,39 +108,6 @@ p.action-text {
   color: white;
 }
 
-.reglog {
-  margin: auto;
-  margin-top: 30px;
-}
-
-  .reglog button {
-    margin-top: 5px;
-    width: 100%;
-  }
-
-  .reglog input[type=password] {
-    margin-top: 5px;
-  }
-
-footer p {
-  color: #F0E68C;
-  font-family: Raleway Thin, sans-serif;
-}
-
-  footer p a {
-    color: #F0E68C;
-    font-family: sans-serif;
-  }
-
-  footer p a:hover {
-    color: #F0E68C;
-  }
-
-  footer p a:visited {
-    color: #F0E68C;
-  }
-
-
 /* Mail View Styles */
 
 
@@ -166,7 +118,7 @@ footer p {
   top: 0;
   right: 0;
   height: 35px;
-  background-color: #333;
+  background-color: #222;
   color: #fff;
 }
 
@@ -192,7 +144,7 @@ footer p {
   right: 0;
   bottom: 0;
   width: 50px;
-  background-color: #333;
+  background-color: #222;
   color: #fff;
   text-align: center;
   z-index: 1;
@@ -217,10 +169,11 @@ footer p {
   bottom: 0;
   left: 0;
   width: 220px;
-  background-color: #333;
+  background-color: #222;
   text-align: center;
   overflow-y: scroll;
   z-index: 1;
+  font-family: 'Lato';
 }
 
 .highlight {
