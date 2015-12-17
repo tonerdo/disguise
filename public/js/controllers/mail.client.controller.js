@@ -17,7 +17,14 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$state', '$location', '$coo
   };
 
   $scope.getUnread = function(){
-    $state.go('mail.inbox', {}, {reload: true});
+
+    EmailSvc.unread($rootScope.rootUser.user_id)
+      .success(function(data){
+        $scope.unread = data.unread;
+      })
+      .error(function(data){
+      });
+
   };
 
 
