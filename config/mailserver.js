@@ -108,30 +108,6 @@ module.exports = function() {
 
 }
 
-// { 
-//   text: 'Hello Toni,\nJust sending a message to say hello to you.\nTake care',
-//   headers:
-//    { 
-//      from: '"Toni Solarin-Sodara" <toni.edward@outlook.com>',
-//      to: '<toni@disgui.se>',
-//      subect: 'Trying my smtp server' 
-//    },
-//   priority: 'normal',
-//   from: [ 
-//     { 
-//       address: 'toni.edward@outlook.com',
-//       name: 'Toni Solarin-Sodara' 
-//     } 
-//   ],
-//   to: [ 
-//     { 
-//       address: 'toni@disgui.se', 
-//       name: '' 
-//     } 
-//   ] 
-// }
-
-
 
 
 
