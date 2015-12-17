@@ -8,25 +8,6 @@ html {
   position: relative;
   min-height: 100%;
 }
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-
-span.input-group-addon {
-  background-color: #5bc0de; 
-  color: #fff; 
-  font-weight: normal;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  /* Set the fixed height of the footer here */
-  height: 30px;
-}
-
 </style>
 
 <p class="gutter"></p>
@@ -57,21 +38,24 @@ span.input-group-addon {
             <form id="login-form">
               <div class="disguise-input-group">
                 <div class="input-field">
-                  <input type="text" class="disguise-form-control" placeholder="Username" />
+                  <input type="text" class="disguise-form-control" ng-model="user.username" placeholder="Username" />
                 </div>
                 <div class="label-field">
                   <span>@disgui.se</span>
                 </div>
               </div>
-              <input type="password" class="disguise-form-control" placeholder="Password" />
-              <input type="submit" class="disguise-btn-primary" value="LOGIN" placeholder="Password" />
+              <input type="password" class="disguise-form-control" placeholder="Password" ng-model="password" />
+              <input type="password" class="disguise-form-control" placeholder="Confirm Password" ng-model="confirm" ng-show="!loginMode" />
+              <input type="submit" class="disguise-btn-primary" value="LOGIN" ng-click="login()"  ng-if="loginMode" />
+              <input type="submit" class="disguise-btn-primary" value="REGISTER" ng-click="register()"  ng-if="!loginMode" />
             </form>
           </div>
           <div class="col-lg-1 col-md-1"></div>
         </div>
       </div>
       
-      <p id="reg">Not registered? <a href="#">Sign Up</a></p>
+      <p id="reg" ng-if="loginMode">Not registered? <a href="#" ng-click="changeMode()">Sign Up</a></p>
+      <p id="reg" ng-if="!loginMode">Already registered? <a href="#" ng-click="changeMode()">Sign In</a></p>
       
     </div>
     
@@ -79,47 +63,6 @@ span.input-group-addon {
   <div class="col-lg-3 col-md-3 col-sm-3"></div>
 
 </div>
-
-
-<!--<div class="row">
-
-  <div class="col-lg-2 col-md-2 col-sm-2"></div>
-
-  <div class="col-lg-8 col-md-8 col-sm-8" style="text-align: center;">
-    <h2 id="desc">
-      Create quick and lightweight disposable email accounts.<br>
-      <span class="scratchpad">Evade spam</span>
-    </h2>
-  </div>
-
-  <div class="col-lg-2 col-md-2 col-sm-2"></div>
-
-</div>
-
-<footer class="footer">
-  <div class="container">
-    <p>
-      Made with <span class="glyphicon glyphicon-heart"></span> by <a target="_blank" href="http://twitter.com/tonerdo">Toni</a> from <a target="_blank" href="http://andela.com">Andela</a>
-    </p>
-  </div>
-</footer>-->
-
-<link rel="stylesheet" type="text/css" href="css/typed.css">
-<script type="text/javascript" src="lib/typed.js/dist/typed.min.js"></script>
-<script type="text/javascript">
-  $(function(){
-    $(".scratchpad").typed({
-      strings: [
-        "Evade spam.", 
-        "Protect your privacy.",
-        "Account self destructs after 72 hours."
-      ],
-      typeSpeed: 1,
-      loop: true,
-      backDelay: 1000
-    });
-  });
-</script>
 
 
 

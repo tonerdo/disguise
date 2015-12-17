@@ -29,23 +29,23 @@
   border-top-right-radius: 5px;
 }
 
-  #logo-area p {
-    text-align: center;
-    position: relative;
-    padding-bottom: 5px;
-  }
+#logo-area p {
+  text-align: center;
+  position: relative;
+  padding-bottom: 5px;
+}
   
-    #logo-area p i {
-      color: #DAA520;
-      font-size: 75px;
-    }
-    
-    #logo-area p span {
-      color: #CCC;
-      font-size: 40px;
-      vertical-align: super;
-      font-family: 'Gotham Rounded Bold';
-    }
+#logo-area p i {
+  color: #DAA520;
+  font-size: 75px;
+}
+
+#logo-area p span {
+  color: #CCC;
+  font-size: 40px;
+  vertical-align: super;
+  font-family: 'Gotham Rounded Bold';
+}
 
 p.desc {
   color: #BBB;
