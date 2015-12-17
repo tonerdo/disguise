@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN npm install -g bower
 RUN npm install
-RUN bower install
+RUN bower --allow-root install
 RUN npm install forever -g
 
 EXPOSE 8080
