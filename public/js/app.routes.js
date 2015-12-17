@@ -31,7 +31,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoa
       .state('mail.inbox.messages', {
         url: '/:messageId',
         templateUrl: './views/receivedmessage.client.view.html',
-        controller: 'ReceivedCtrl'
+        controller: 'ReceivedMessageCtrl'
       })
       .state('mail.sent', {
         url: '/sent',
@@ -41,7 +41,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoa
       .state('mail.sent.messages', {
         url: '/:messageId',
         templateUrl: './views/sentmessage.client.view.html',
-        controller: 'OutboxCtrl'
+        controller: 'SentMessageCtrl'
       });
 
     $locationProvider.html5Mode(true);

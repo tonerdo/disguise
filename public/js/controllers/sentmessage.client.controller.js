@@ -1,4 +1,4 @@
-app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment', 'EmailSvc',
+app.controller('SentMessageCtrl', ['$scope', '$rootScope', '$stateParams', '$moment', 'EmailSvc',
  function($scope, $rootScope, $stateParams, $moment, EmailSvc){
 
   $scope.message = {};
