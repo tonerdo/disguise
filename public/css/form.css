@@ -1,0 +1,58 @@
+.disguise-form-control {
+  padding: 10px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border: 0px;
+  font-weight: 300;
+  background-color: #333;
+  font-size: 18px;
+  color: #999;
+}
+
+.disguise-btn-primary {
+  padding: 10px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border: 0px;
+  font-weight: 300;
+  background-color: #17719D;
+  font-size: 14px;
+  color: #fff;
+}
+
+#login-form {
+  width: 100%;
+  margin-top: 45px;
+  padding: 10px;
+}
+
+  #login-form > input {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+.disguise-input-group {
+  width: 100%;
+  margin-bottom: 30px;
+}
+  
+  .disguise-input-group input {
+    width: 100%;
+  }
+  
+  .disguise-input-group .input-field {
+    width: 75%;
+    float: left;
+  }
+  
+  .disguise-input-group .label-field {
+    width: 25%;
+    overflow: hidden;
+    text-align: center;
+    background-color: #17719D;
+    padding: 10px;
+    padding-top: 13px;
+    padding-bottom: 18px;
+    color: #FFFFFF;
+    text-overflow: ellipsis;
+  }
