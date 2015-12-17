@@ -17,5 +17,7 @@ module.exports = function(app) {
 
   app.route('/api/emails/:user_id/sent')
         .get(jwtauth, email.sent);
-        
+
+  app.route('/api/emails/receive')
+      .post(email.receive);
 }
