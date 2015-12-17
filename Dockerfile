@@ -12,4 +12,4 @@ RUN npm install forever -g
 EXPOSE 8080
 EXPOSE 1025
 
-ENTRYPOINT node server.js
+ENTRYPOINT forever server.js
