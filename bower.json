@@ -22,7 +22,6 @@
     "angular-ui-router": "~0.2.15",
     "angular-sanitize": "~1.4.0",
     "bootstrap": "~3.3.4",
-    "typed.js": "*",
     "angular-cookies": "~1.4.0",
     "ng-tags-input": "~2.3.0",
     "textAngular": "~1.4.1",
@@ -31,6 +30,7 @@
     "angular-momentjs": "~0.1.9",
     "angular-loading-bar": "~0.7.1",
     "sweetalert": "~1.0.1",
-    "jssha": "~2.0.0"
+    "jssha": "~2.0.0",
+    "angular-toastr": "~1.6.0"
   }
 }

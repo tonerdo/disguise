@@ -1,27 +1,73 @@
 @font-face {
-  font-family: Raleway;
+  font-family: Raleway Thin;
   src: url('../fonts/raleway/raleway_thin-webfont.woff');
 }
 
-img.logo {
-  width: 300px;
+@font-face {
+  font-family: Gotham Rounded Bold;
+  src: url('../fonts/gotham-rounded/gotham-rounded_bold-webfont.woff');
 }
 
-p.logo {
+#login-area {
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 5px;
+  background-color: #222;
+  padding-bottom: 35px;
+}
+
+#inner-login-area {
+  margin-top: 45px;
+}
+
+#logo-area {
+  width: 100%;
+  background-color: #000;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#logo-area p {
   text-align: center;
-  color: #F0E68C;
-  font-size: 4em;
-  font-family: Raleway;
+  position: relative;
+  padding-bottom: 5px;
+}
+  
+#logo-area p i {
+  color: #DAA520;
+  font-size: 75px;
 }
 
-  p.logo span {
-    margin-left: -10px;
+#logo-area p span {
+  color: #CCC;
+  font-size: 40px;
+  vertical-align: super;
+  font-family: 'Gotham Rounded Bold';
+}
+
+p.desc {
+  color: #BBB;
+  text-align: center;
+  line-height: 33px;
+  font-size: 18px;
+}
+
+  p.desc span {
+    font-size: 14px;
+    letter-spacing: 5px;
   }
+
+p#reg {
+  color: #FFFFFF;
+  text-align: center;
+}
 
 i.logo {
   margin-top: 35px;
   margin-bottom: 35px;
-  color: #F0E68C;
+  color: #DAA520;
   font-size: 75px;
 }
 
@@ -32,7 +78,7 @@ i.logo {
 
 h2#desc {
   color: #F0E68C;
-  font-family: Raleway, sans-serif;
+  font-family: Raleway Thin, sans-serif;
   line-height: 1.4em;
   margin-top: 65px;
 }
@@ -62,39 +108,6 @@ p.action-text {
   color: white;
 }
 
-.reglog {
-  margin: auto;
-  margin-top: 30px;
-}
-
-  .reglog button {
-    margin-top: 5px;
-    width: 100%;
-  }
-
-  .reglog input[type=password] {
-    margin-top: 5px;
-  }
-
-footer p {
-  color: #F0E68C;
-  font-family: Raleway, sans-serif;
-}
-
-  footer p a {
-    color: #F0E68C;
-    font-family: sans-serif;
-  }
-
-  footer p a:hover {
-    color: #F0E68C;
-  }
-
-  footer p a:visited {
-    color: #F0E68C;
-  }
-
-
 /* Mail View Styles */
 
 
@@ -105,7 +118,7 @@ footer p {
   top: 0;
   right: 0;
   height: 35px;
-  background-color: #333;
+  background-color: #222;
   color: #fff;
 }
 
@@ -131,7 +144,7 @@ footer p {
   right: 0;
   bottom: 0;
   width: 50px;
-  background-color: #333;
+  background-color: #222;
   color: #fff;
   text-align: center;
   z-index: 1;
@@ -156,10 +169,11 @@ footer p {
   bottom: 0;
   left: 0;
   width: 220px;
-  background-color: #333;
+  background-color: #222;
   text-align: center;
   overflow-y: scroll;
   z-index: 1;
+  font-family: 'Lato';
 }
 
 .highlight {
@@ -199,9 +213,6 @@ footer p {
     text-decoration: none;
   }
 
-  #sidebar #sidebar-menu {
-    
-  }
 
     #sidebar #sidebar-menu p {
       padding-top: 8px;
@@ -234,7 +245,7 @@ footer p {
 }
 
 .page-header {
-  font-family: Raleway;
+  font-family: Raleway Thin;
   font-weight: bold;
 }
 
@@ -300,7 +311,7 @@ footer p {
 }
 
 p.gutter {
-  margin-top: 75px;
+  margin-top: 30px;
 }
 
 /* Sidebar responsiveness */

@@ -1,4 +1,4 @@
-app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment', 'EmailSvc',
+app.controller('SentMessageCtrl', ['$scope', '$rootScope', '$stateParams', '$moment', 'EmailSvc',
  function($scope, $rootScope, $stateParams, $moment, EmailSvc){
 
   $scope.message = {};
@@ -11,6 +11,7 @@ app.controller('OutboxCtrl', ['$scope', '$rootScope', '$stateParams', '$moment',
       $scope.message = $rootScope.outbox[i];
       $scope.message.date = $moment($scope.message.date);
       $scope.message.date = $scope.message.date.toString();
+      $("#message-body").html($scope.message.html || $scope.message.text);
     }
   };
 

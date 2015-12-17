@@ -1,0 +1,23 @@
+<div class="actions">
+  <button class="btn btn-danger btn-xs" ng-click="delete()">
+    <span class="glyphicon glyphicon-trash"></span>
+    Delete
+  </button>
+</div>
+
+<div class="message-header">
+  <h2>{{message.subject}}</h2>
+  <span style="font-size: 13px;">
+    From: {{message.from[0].name || message.from[0].address}} <br>
+    Sent: {{message.headers.date}}
+    <span ng-show="message.headers.cc">
+      <br>
+      Cc: {{message.headers.cc | stringify}} 
+    <span>
+    <span ng-show="message.headers.bcc">
+      <br>
+      Bcc: {{message.headers.bcc | stringify}}
+    </span>
+  </span>
+</div>
+<div class="message-content container-fluid" id="message-body"></div>

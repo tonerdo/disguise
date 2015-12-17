@@ -1,10 +1,9 @@
 FROM ubuntu:15.04
+FROM node:latest
 
 RUN apt-get update
 RUN apt-get install -y sudo
 RUN sudo apt-get install -y git
-RUN sudo apt-get install -y nodejs
-RUN sudo apt-get install -y npm
 RUN sudo apt-get install -y mongodb
 
 COPY . /app

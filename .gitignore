@@ -1,4 +1,5 @@
 node_modules/
 public/lib/
 .log
-.DS_Store/
+.DS_Store
+typings/
