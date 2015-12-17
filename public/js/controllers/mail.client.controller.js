@@ -1,5 +1,5 @@
-app.controller('MailCtrl', ['$rootScope', '$scope', '$state', '$location', '$cookies', 'EmailSvc', 'UserSvc',
- function($rootScope, $scope, $state, $location, $cookies, EmailSvc, UserSvc){
+app.controller('MailCtrl', ['$rootScope', '$scope', '$state', '$location', '$cookies', 'EmailSvc', 'UserSvc', 'toastr',
+ function($rootScope, $scope, $state, $location, $cookies, EmailSvc, UserSvc, toastr){
   
   var cookie = $cookies.get('user');
   if (!cookie) {
@@ -17,14 +17,7 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$state', '$location', '$coo
   };
 
   $scope.getUnread = function(){
-
-    EmailSvc.unread($rootScope.rootUser.user_id)
-      .success(function(data){
-        $scope.unread = data.unread;
-      })
-      .error(function(data){
-      });
-
+    $state.go('mail.inbox', {}, {reload: true});
   };
 
 
@@ -46,16 +39,16 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$state', '$location', '$coo
       showCancelButton: true,   
       confirmButtonColor: "#DD6B55",   
       confirmButtonText: "Yes, dispose it!",   
-      closeOnConfirm: false 
+      closeOnConfirm: true 
     }, 
     function(){   
       UserSvc.dispose($rootScope.rootUser.user_id, $rootScope.rootUser.access_token)
         .success(function(data){
-          swal("Deleted!", "Your account has been disposed.", "success");
+          toastr.success("Your account has been disposed.");
           $location.path('/');
         })
         .error(function(){
-          swal("Deleted!", "Your account has been disposed.", "success");
+          toastr.success("Your account has been disposed.");
           $location.path('/');
         });
     });
