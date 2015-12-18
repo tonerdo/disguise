@@ -33,7 +33,7 @@
     "express-session": "^1.11.2",
     "jwt-simple": "^0.3.0",
     "lodash": "^3.9.3",
-    "mailparser": "^0.5.1",
+    "mailparser": "^0.5.3",
     "moment": "^2.10.3",
     "mongoose": "^4.0.4",
     "morgan": "^1.5.3",
