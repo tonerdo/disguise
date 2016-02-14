@@ -44,19 +44,19 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc', 'toast
         validated = false;
       }
 
-      if (!$scope.password || $scope.password == '') {
+      if (!$scope.user.password || $scope.user.password == '') {
 
         showWarning('Password is required');
         validated = false;
       }
 
-      if ($scope.password && $scope.password.length < 8) {
+      if ($scope.user.password && $scope.user.password.length < 8) {
         
         showWarning('Password cannot be less than eight characters');
         validated = false;
       }
       
-      if (!$scope.loginMode && (!$scope.confirm || $scope.password !== $scope.confirm)) {
+      if (!$scope.loginMode && (!$scope.confirm || $scope.user.password !== $scope.confirm)) {
         
         showWarning('Confirm password field must be the same as password field');
         validated = false;
@@ -69,13 +69,6 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc', 'toast
     $scope.login = function () {
 
       if (!validate()) { return; }
-
-      $scope.user.password = angular.copy($scope.password);
-
-      var shaObj = new jsSHA("SHA-512", "TEXT");
-      shaObj.update($scope.user.password);
-      var hash = shaObj.getHash("HEX");
-      $scope.user.password = hash;
 
       UserSvc.login($scope.user)
         .success(function (data, status) {
@@ -98,13 +91,6 @@ app.controller('HomeCtrl', ['$scope', '$location', '$cookies', 'UserSvc', 'toast
     $scope.register = function () {
       
       if (!validate()) { return; }
-
-      $scope.user.password = angular.copy($scope.password);
-
-      var shaObj = new jsSHA("SHA-512", "TEXT");
-      shaObj.update($scope.user.password);
-      var hash = shaObj.getHash("HEX");
-      $scope.user.password = hash;
 
       UserSvc.register($scope.user)
         .success(function (data, status) {

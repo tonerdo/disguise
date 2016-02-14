@@ -44,7 +44,7 @@ html {
                   <span>@disgui.se</span>
                 </div>
               </div>
-              <input type="password" class="disguise-form-control" placeholder="Password" ng-model="password" />
+              <input type="password" class="disguise-form-control" placeholder="Password" ng-model="user.password" />
               <input type="password" class="disguise-form-control" placeholder="Confirm Password" ng-model="confirm" ng-show="!loginMode" />
               <input type="submit" class="disguise-btn-primary" value="LOGIN" ng-click="login()"  ng-if="loginMode" />
               <input type="submit" class="disguise-btn-primary" value="REGISTER" ng-click="register()"  ng-if="!loginMode" />

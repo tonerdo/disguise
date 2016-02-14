@@ -1,4 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy;
+var jssha = require('jssha');
 
 // load up the user model
 require('../app/models/user.server.model');
@@ -26,6 +27,12 @@ module.exports = function(app, passport, jwt) {
   passport.use('local', new LocalStrategy(
     function(username, password, done){
       username = username.toLowerCase();
+      
+      var shaObj = new jssha("SHA-512", "TEXT");
+      shaObj.update(password);
+      var hash = shaObj.getHash("HEX");
+      password = hash;
+      
       User.findOne({"username": username, "password": password}, function(err, user){
 
         if(err) { return done(err); }

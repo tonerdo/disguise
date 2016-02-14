@@ -31,6 +31,7 @@
     "dotenv": "^1.1.0",
     "express": "^4.12.4",
     "express-session": "^1.11.2",
+    "jssha": "^2.0.2",
     "jwt-simple": "^0.3.0",
     "lodash": "^3.9.3",
     "mailparser": "^0.5.3",

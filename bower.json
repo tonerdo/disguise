@@ -30,7 +30,6 @@
     "angular-momentjs": "~0.1.9",
     "angular-loading-bar": "~0.7.1",
     "sweetalert": "~1.0.1",
-    "jssha": "~2.0.0",
     "angular-toastr": "~1.6.0"
   }
 }

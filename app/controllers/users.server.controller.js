@@ -1,7 +1,8 @@
 require('../models/user.server.model');
 var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
-    _ = require('lodash');
+  User = mongoose.model('User'),
+  _ = require('lodash'),
+  jssha = require('jssha');
 
 
 module.exports = {
@@ -16,6 +17,11 @@ module.exports = {
 
     var user = new User(req.body);
     user.username = req.body.username.toLowerCase();
+    
+    var shaObj = new jssha("SHA-512", "TEXT");
+    shaObj.update(user.password);
+    var hash = shaObj.getHash("HEX");
+    user.password = hash;
 
     user.save(function(err){
 
