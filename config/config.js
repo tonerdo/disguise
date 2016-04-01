@@ -9,7 +9,7 @@ module.exports = function() {
   };
 
   var db = {
-    "uri": process.env.MONGODB_DEV || "mongodb://" + process.env.MONGODB_PORT_27017_TCP_ADDR + ":" + process.env.MONGODB_PORT_27017_TCP_PORT + "/disguise"
+    "uri": process.env.MONGODB || "mongodb://localhost/disguise"
   };
 
   var jwt = {
