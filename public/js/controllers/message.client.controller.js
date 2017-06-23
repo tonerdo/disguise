@@ -1,4 +1,4 @@
-app.controller('ReceivedMessageCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$moment', '$location', 'EmailSvc',
+app.controller('MessageCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$moment', '$location', 'EmailSvc',
   function ($scope, $rootScope, $state, $stateParams, $moment, $location, EmailSvc) {
 
     $scope.message = {};

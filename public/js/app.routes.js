@@ -25,8 +25,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoa
       })
       .state('mail.inbox.messages', {
         url: '/:messageId',
-        templateUrl: './views/receivedmessage.client.view.html',
-        controller: 'ReceivedMessageCtrl'
+        templateUrl: './views/message.client.view.html',
+        controller: 'MessageCtrl'
       });
 
     $locationProvider.html5Mode(true);
