@@ -10,7 +10,6 @@ var MailParser = require("mailparser").MailParser;
 
 module.exports = {
 
-
   received: function(req, res, next) {
 
     var userId = req.params.user_id;
@@ -129,78 +128,6 @@ module.exports = {
 
     res.json({ "message": "Delete successful" });
 
-  },
-
-
-  /**
-   * Send an email
-   * @param  {[type]}
-   * @param  {[type]}
-   * @return {[type]}
-   */
-  send: function(req, res, next) {
-
-    var transporter = nodemailer.createTransport();
-    var username = req.body.from.toLowerCase();
-
-    // Check if user exists
-    User.findOne({"username": username}, function(err, user){
-
-      if (err) {
-        res.status(500).send({
-          "message": "Error retrieving user",
-          "error": err
-        });
-      } else if(!user) {
-        res.status(500).send({
-          "message": "User does not exist"
-        });
-      } else {
-
-        // Append domain name to req.body.from
-        req.body.from += '@disgui.se';
-        req.body.date = Date.now();
-
-        // Send the email
-        transporter.sendMail(req.body, function(err, info){
-
-          if(err){
-
-            res.status(500).send({
-              "message": "Message sending failed",
-              "error": err
-            });
-
-          } else {
-
-            req.body.messageId = info.messageId;
-            var email = JSON.stringify(req.body);
-
-            // Insert message details into database
-            User.findByIdAndUpdate(
-              user._id,
-              {$push: {"sent": email}},
-              {safe: true, upsert: true},
-              function(err, model) {
-                if(err) console.log('Sent messages append error: ' + err);
-              }
-            );
-            
-            // Send response
-            res.json({
-              "message": "Message sent successfully",
-              "response": info
-            });
-          }
-
-        });
-
-      }
-
-    });
-
-    // Close connection to free up resources
-    transporter.close();
   },
 
   receive: function(req, res, next) {

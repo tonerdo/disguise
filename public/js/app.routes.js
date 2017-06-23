@@ -18,11 +18,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoa
         templateUrl: './views/mail.client.view.html',
         controller: 'MailCtrl'
       })
-      .state('mail.compose', {
-        url: '/compose',
-        templateUrl: './views/compose.client.view.html',
-        controller: 'ComposeCtrl'
-      })
       .state('mail.inbox', {
         url: '/inbox',
         templateUrl: './views/inbox.client.view.html',

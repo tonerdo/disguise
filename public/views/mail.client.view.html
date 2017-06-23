@@ -13,12 +13,6 @@
   <p class="divider"></p>
 
   <div id="sidebar-menu">
-    <a ui-sref="mail.compose" ui-sref-opts="{reload: true}">
-      <p ng-class="{'highlight': highlight('/mail/compose')}">
-        <span class="glyphicon glyphicon-edit"></span>&nbsp;
-        <span>Compose</span>
-      </p>
-    </a>
     <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
       <p ng-class="{'highlight': highlight('/mail/inbox')}">
         <span class="glyphicon glyphicon-inbox"></span>&nbsp;
@@ -48,11 +42,6 @@
     <i class="fa fa-user-secret logo"></i>
   </a>
   <div>
-    <p ng-class="{'highlight': highlight('/mail/compose')}">
-      <a ui-sref="mail.compose" ui-sref-opts="{reload: true}">
-        <span class="glyphicon glyphicon-edit"></span>
-      </a>
-    </p>
     <p ng-class="{'highlight': highlight('/mail/inbox')}">
       <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
         <span class="glyphicon glyphicon-inbox"></span>
@@ -85,9 +74,6 @@
     </a>
     <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
       <span class="glyphicon glyphicon-inbox"></span>
-    </a>
-    <a ui-sref="mail.compose" ui-sref-opts="{reload: true}">
-      <span class="glyphicon glyphicon-edit"></span>
     </a>
   </div>
 </div>
