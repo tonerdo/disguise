@@ -12,10 +12,6 @@ app.controller('MailCtrl', ['$rootScope', '$scope', '$state', '$location', '$coo
     $state.go('mail.inbox', {}, {reload: true});
   }
 
-  $scope.highlight = function(path){
-    return $location.path().indexOf(path) !== -1;
-  };
-
   $scope.getUnread = function(){
 
     EmailSvc.unread($rootScope.rootUser.user_id)
