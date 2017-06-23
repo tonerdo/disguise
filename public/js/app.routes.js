@@ -27,16 +27,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoa
         url: '/:messageId',
         templateUrl: './views/receivedmessage.client.view.html',
         controller: 'ReceivedMessageCtrl'
-      })
-      .state('mail.sent', {
-        url: '/sent',
-        templateUrl: './views/sent.client.view.html',
-        controller: 'SentCtrl'
-      })
-      .state('mail.sent.messages', {
-        url: '/:messageId',
-        templateUrl: './views/sentmessage.client.view.html',
-        controller: 'SentMessageCtrl'
       });
 
     $locationProvider.html5Mode(true);

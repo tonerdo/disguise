@@ -23,12 +23,6 @@
         </a>
       </p>
     </a>
-    <a ui-sref="mail.sent" ui-sref-opts="{reload: true}">
-      <p ng-class="{'highlight': highlight('/mail/sent')}">
-        <span class="glyphicon glyphicon-send"></span>&nbsp;
-        <span>Sent</span>
-      </p>
-    </a>
   </div>
   <p class="divider"></p>
   <button style="width: 90%; border-radius: 6px;" ng-click="dispose()" class="btn btn-danger btn-sm">
@@ -47,11 +41,6 @@
         <span class="glyphicon glyphicon-inbox"></span>
       </a>
     </p>
-    <p ng-class="{'highlight': highlight('/mail/sent')}">
-      <a ui-sref="mail.sent" ui-sref-opts="{reload: true}">
-        <span class="glyphicon glyphicon-send"></span>
-      </a>
-    </p>
     <p>
       <a href="" ng-click="dispose()">
         <span class="glyphicon glyphicon-trash"></span>
@@ -68,9 +57,6 @@
     </a>
     <a href="" ng-click="dispose()">
       <span class="glyphicon glyphicon-trash"></span>
-    </a>
-    <a ui-sref="mail.sent" ui-sref-opts="{reload: true}">
-      <span class="glyphicon glyphicon-send"></span>
     </a>
     <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
       <span class="glyphicon glyphicon-inbox"></span>

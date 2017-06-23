@@ -70,21 +70,6 @@ module.exports = {
 
   },
 
-  sent: function(req, res, next) {
-
-    var userId = req.params.user_id;
-    var messageId = req.query.id;
-
-    var sent = _.map(req.user.sent, function(msg){
-      return JSON.parse(msg);
-    });
-
-    res.json(sent);
-
-    next();
-
-  },
-
   delete: function(req, res, next) {
 
     var channel = req.query.channel;

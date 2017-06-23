@@ -19,7 +19,6 @@ var UserSchema = new Schema({
     default: Date.now
   },
 
-  sent: [String],
   received: [String]
 
 });
