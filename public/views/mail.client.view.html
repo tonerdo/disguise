@@ -14,7 +14,7 @@
 
   <div id="sidebar-menu">
     <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
-      <p ng-class="{'highlight': highlight('/mail/inbox')}">
+      <p class="highlight">
         <span class="glyphicon glyphicon-inbox"></span>&nbsp;
         <span>Inbox</span>
         <span class="label label-primary" ng-show="unread || unread > 0">{{unread}}</span>
@@ -36,7 +36,7 @@
     <i class="fa fa-user-secret logo"></i>
   </a>
   <div>
-    <p ng-class="{'highlight': highlight('/mail/inbox')}">
+    <p class="highlight">
       <a ui-sref="mail.inbox" ui-sref-opts="{reload: true}">
         <span class="glyphicon glyphicon-inbox"></span>
       </a>
